@@ -1,12 +1,12 @@
 export const site = {
+  // Каноническое имя. То, что видно на странице, берётся из messages.identity,
+  // чтобы EN и RU не тянули одну и ту же строку отсюда.
   name: "Алексей",
   handle: "notnamejack",
-  role: "Senior / Lead Frontend Developer",
-  location: "Иркутск",
-  pronouns: "he/him",
   github: "https://github.com/notnamejack",
   url: "https://notnamejack.github.io/resume/",
   // Публичные контакты. Заполнить строку после подтверждения — секция подхватит сама.
+  // TODO: worksFor, familyName и email — только после подтверждения, не выдумывать.
   email: "",
   telegram: "@notnamejack",
 };

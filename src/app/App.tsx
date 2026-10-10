@@ -1,4 +1,5 @@
 import { MotionConfig } from "motion/react";
+import { DocumentMeta } from "@/app/document-meta";
 import { HomePage } from "@/pages/home/ui/HomePage";
 import { ActiveSectionProvider } from "@/shared/lib/active-section";
 import { PreferencesProvider } from "@/shared/preferences/preferences";
@@ -11,6 +12,7 @@ import { SectionRail } from "@/widgets/rail/ui/SectionRail";
 export function App() {
   return (
     <PreferencesProvider>
+      <DocumentMeta />
       <MotionConfig reducedMotion="user">
         <ActiveSectionProvider>
           <SkipLink />

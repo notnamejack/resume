@@ -28,25 +28,35 @@ function themeColor(theme: Theme) {
   return theme === "light" ? "#F4F4F0" : "#0D0D0F";
 }
 
+function writeStorage(key: string, value: string) {
+  try {
+    localStorage.setItem(key, value);
+  } catch {
+    // Private mode can reject storage. The document attributes still hold the choice.
+  }
+}
+
 export function PreferencesProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>(readLocale);
-  const [theme, setTheme] = useState<Theme>(readTheme);
+  const [locale, setLocaleState] = useState<Locale>(readLocale);
+  const [theme, setThemeState] = useState<Theme>(readTheme);
   const t = messages[locale];
+
+  const setLocale = (next: Locale) => {
+    setLocaleState(next);
+    writeStorage(LOCALE_KEY, next);
+  };
+
+  const setTheme = (next: Theme) => {
+    setThemeState(next);
+    writeStorage(THEME_KEY, next);
+  };
 
   useEffect(() => {
     const root = document.documentElement;
     root.lang = locale;
     root.dataset.theme = theme;
-    try {
-      localStorage.setItem(LOCALE_KEY, locale);
-      localStorage.setItem(THEME_KEY, theme);
-    } catch {
-      // Private mode can reject storage. The document attributes still hold the choice.
-    }
-    document.title = t.meta.title;
-    document.querySelector('meta[name="description"]')?.setAttribute("content", t.meta.description);
     document.querySelector('meta[name="theme-color"]')?.setAttribute("content", themeColor(theme));
-  }, [locale, theme, t]);
+  }, [locale, theme]);
 
   const value = useMemo(
     () => ({ locale, theme, t, setLocale, setTheme }),

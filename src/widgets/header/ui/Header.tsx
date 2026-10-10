@@ -102,7 +102,7 @@ export function Header() {
     <header ref={headerRef} className={cn(styles.header, (scrolled || open) && styles.solid)}>
       <div className={styles.inner}>
         <a className={styles.brand} href="#top" onClick={() => setOpen(false)}>
-          <span className={styles.name}>{site.name}</span>
+          <span className={styles.name}>{t.identity.name}</span>
           <span className={styles.handle}>{site.handle}</span>
         </a>
 

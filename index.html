@@ -2,6 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#0D0D0F" />
     <script>
       (function () {
         var locale = "en";
@@ -9,17 +12,25 @@
         try {
           var storedLocale = localStorage.getItem("locale");
           var storedTheme = localStorage.getItem("theme");
-          if (storedLocale === "ru" || storedLocale === "en") locale = storedLocale;
-          if (storedTheme === "light" || storedTheme === "dark") theme = storedTheme;
+          if (storedLocale === "ru" || storedLocale === "en") {
+            locale = storedLocale;
+          } else {
+            var language = (navigator.language || "").toLowerCase();
+            locale = language.indexOf("ru") === 0 ? "ru" : "en";
+          }
+          if (storedTheme === "light" || storedTheme === "dark") {
+            theme = storedTheme;
+          } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+            theme = "light";
+          }
         } catch (e) {}
         var root = document.documentElement;
         root.lang = locale;
         root.dataset.theme = theme;
+        var themeColor = document.querySelector('meta[name="theme-color"]');
+        if (themeColor) themeColor.setAttribute("content", theme === "light" ? "#F4F4F0" : "#0D0D0F");
       })();
     </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="dark light" />
-    <meta name="theme-color" content="#0D0D0F" />
     <title>Алексей — Senior / Lead Frontend Developer</title>
     <meta
       name="description"
@@ -76,6 +87,16 @@
     </script>
   </head>
   <body>
+    <noscript>
+      <div class="noscript">
+        <p><strong>Алексей</strong> — Senior / Lead Frontend Developer. Irkutsk.</p>
+        <p>Application architecture, complex interfaces, and engineering process in teams.</p>
+        <p>
+          <a href="https://github.com/notnamejack">GitHub</a>
+          <a href="https://t.me/notnamejack">Telegram</a>
+        </p>
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

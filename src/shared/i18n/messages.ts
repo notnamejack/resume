@@ -5,6 +5,16 @@ const en = {
     title: "Алексей — Senior / Lead Frontend Developer",
     description:
       "Aleksei, Senior / Lead Frontend Developer. Application architecture, complex interfaces, and engineering process in teams.",
+    ogTitle: "Алексей — Frontend Engineer. Architecture. Leadership.",
+    ogDescription:
+      "Senior / Lead Frontend Developer. Application architecture, complex interfaces, and engineering process in teams.",
+    twitterTitle: "Алексей — Frontend Engineer. Architecture. Leadership.",
+    twitterDescription:
+      "Senior / Lead Frontend Developer. Application architecture, complex interfaces, engineering process.",
+  },
+  identity: {
+    name: "Алексей",
+    pronouns: "he/him",
   },
   controls: {
     language: "Language",
@@ -216,6 +226,16 @@ const ru: Messages = {
     title: "Алексей — Senior / Lead Frontend Developer",
     description:
       "Алексей — Senior / Lead Frontend Developer. Архитектура веб-приложений, сложные интерфейсы и инженерные процессы в командах.",
+    ogTitle: "Алексей — Фронтенд-инженер. Архитектура. Руководство.",
+    ogDescription:
+      "Алексей — Senior / Lead Frontend Developer. Архитектура веб-приложений, сложные интерфейсы и инженерные процессы в командах.",
+    twitterTitle: "Алексей — Фронтенд-инженер. Архитектура. Руководство.",
+    twitterDescription:
+      "Алексей — Senior / Lead Frontend Developer. Архитектура веб-приложений, сложные интерфейсы и инженерные процессы в командах.",
+  },
+  identity: {
+    name: "Алексей",
+    pronouns: "he/him",
   },
   controls: {
     language: "Язык",
