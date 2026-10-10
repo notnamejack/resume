@@ -32,7 +32,7 @@ npm run preview
 
 ## Контакты
 
-Email и Telegram намеренно пустые, пока адреса не подтверждены. Заполнить строки в `src/shared/config/site.ts` — блок контактов подхватит их сам.
+Telegram: [@notnamejack](https://t.me/notnamejack). Email пустой, пока адрес не подтверждён. Строки в `src/shared/config/site.ts` — блок контактов подхватит их сам.
 
 ## Новый проект
 
