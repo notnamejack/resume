@@ -23,23 +23,22 @@ export function Contact() {
           </h2>
         </Reveal>
         <address className={styles.list}>
-          {contacts.map((contact) => (
-            <a
-              key={contact.id}
-              className={styles.link}
-              href={contact.href}
-              {...(contact.href.startsWith("mailto:")
-                ? {}
-                : { target: "_blank", rel: "noreferrer noopener" })}
-            >
-              <span className={styles.label}>{contact.label}</span>
-              <span className={styles.value}>{contact.value}</span>
-              <ArrowUpRight className={styles.icon} size={20} strokeWidth={1.5} aria-hidden="true" />
-              {contact.href.startsWith("mailto:") ? null : (
-                <span className="sr-only">{t.newTab}</span>
-              )}
-            </a>
-          ))}
+          {contacts.map((contact) => {
+            const external = !contact.href.startsWith("mailto:");
+            return (
+              <a
+                key={contact.id}
+                className={styles.link}
+                href={contact.href}
+                aria-label={`${contact.label}: ${contact.value}${external ? t.newTab : ""}`}
+                {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              >
+                <span className={styles.label}>{contact.label}</span>
+                <span className={styles.value}>{contact.value}</span>
+                <ArrowUpRight className={styles.icon} size={20} strokeWidth={1.5} aria-hidden="true" />
+              </a>
+            );
+          })}
         </address>
       </div>
     </Section>

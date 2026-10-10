@@ -66,7 +66,7 @@ export function Projects() {
                       className={styles.frame}
                       href={project.live}
                       target="_blank"
-                      rel="noreferrer noopener"
+                      rel="noopener noreferrer"
                     >
                       {image}
                       <span className="sr-only">{t.work.openLive}</span>
@@ -120,17 +120,27 @@ export function Projects() {
                   </ul>
                   <div className={styles.links}>
                     {project.github ? (
-                      <a className={styles.link} href={project.github} target="_blank" rel="noreferrer noopener">
+                      <a
+                        className={styles.link}
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`GitHub: ${project.title}${t.newTab}`}
+                      >
                         GitHub
                         <ArrowUpRight size={16} strokeWidth={1.5} aria-hidden="true" />
-                        <span className="sr-only">{t.newTab}</span>
                       </a>
                     ) : null}
                     {project.live ? (
-                      <a className={styles.link} href={project.live} target="_blank" rel="noreferrer noopener">
+                      <a
+                        className={styles.link}
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${t.work.live}: ${project.title}${t.newTab}`}
+                      >
                         {t.work.live}
                         <ArrowUpRight size={16} strokeWidth={1.5} aria-hidden="true" />
-                        <span className="sr-only">{t.newTab}</span>
                       </a>
                     ) : null}
                   </div>

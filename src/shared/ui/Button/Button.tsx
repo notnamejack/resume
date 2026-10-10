@@ -15,7 +15,7 @@ export function Button({ href, children, variant = "ghost", external = false }: 
       className={cn(styles.button, styles[variant])}
       href={href}
       {...(external
-        ? { target: "_blank", rel: "noreferrer noopener" }
+        ? { target: "_blank", rel: "noopener noreferrer" }
         : {})}
     >
       {children}

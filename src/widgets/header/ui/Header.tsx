@@ -147,7 +147,7 @@ export function Header() {
             className={styles.github}
             href={site.github}
             target="_blank"
-            rel="me noreferrer noopener"
+            rel="me noopener noreferrer"
           >
             <GithubIcon />
             <span className="sr-only">{t.header.github}</span>

@@ -70,7 +70,7 @@
 }
 
 .accent {
-  color: $accent;
+  color: $accent-text;
 }
 
 .subtitle {
@@ -124,7 +124,7 @@
 .scrollLine {
   width: 1px;
   height: 3rem;
-  background: linear-gradient($accent, transparent);
+  background: linear-gradient($accent-text, transparent);
   transform-origin: top center;
   animation: scroll-pulse 1.8s ease-in-out infinite;
 }
