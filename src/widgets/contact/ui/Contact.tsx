@@ -30,7 +30,7 @@ export function Contact() {
                 key={contact.id}
                 className={styles.link}
                 href={contact.href}
-                aria-label={`${contact.label}: ${contact.value}${external ? t.newTab : ""}`}
+                aria-label={`${contact.label} ${contact.value}${external ? t.newTab : ""}`}
                 {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               >
                 <span className={styles.label}>{contact.label}</span>
