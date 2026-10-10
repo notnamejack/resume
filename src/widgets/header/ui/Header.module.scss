@@ -1,0 +1,176 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: $header;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid transparent;
+  transition:
+    background-color 0.2s $ease,
+    border-color 0.2s $ease,
+    backdrop-filter 0.2s $ease;
+}
+
+.solid {
+  background: rgba(13, 13, 15, 0.82);
+  border-bottom-color: $line;
+  backdrop-filter: blur(16px);
+}
+
+.inner {
+  @include container;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  margin-right: auto;
+  line-height: 1.1;
+
+  @include focus;
+}
+
+.name {
+  font-size: 0.98rem;
+  font-weight: 550;
+  letter-spacing: -0.03em;
+}
+
+.handle {
+  @include kicker;
+  letter-spacing: 0.08em;
+  margin-top: 0.2rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+}
+
+.link {
+  @include kicker;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  color: $muted;
+
+  @include focus;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: $text;
+    }
+  }
+}
+
+.current {
+  color: $text;
+}
+
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.github {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $line-strong;
+  color: $text;
+  text-decoration: none;
+
+  @include focus;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      border-color: $accent;
+      color: $accent;
+    }
+  }
+}
+
+.menuButton {
+  display: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $line-strong;
+  background: transparent;
+  cursor: pointer;
+
+  @include focus;
+}
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(13, 13, 15, 0.96);
+  backdrop-filter: blur(18px);
+  display: flex;
+  flex-direction: column;
+  justify-content: safe flex-end;
+  overflow-y: auto;
+  gap: 0.15rem;
+  padding: calc(#{$header} + 1rem) clamp(1.25rem, 4vw, 2.5rem) 2.5rem;
+  animation: menu-in 0.35s $ease;
+}
+
+.menuLink {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  text-decoration: none;
+  font-size: clamp(2rem, 7vw, 3.1rem);
+  letter-spacing: -0.045em;
+  line-height: 1.12;
+  font-weight: 500;
+
+  @include focus;
+}
+
+.menuIndex {
+  @include kicker;
+  width: 1.8rem;
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1180px) {
+  .handle {
+    display: none;
+  }
+}
+
+@media (max-width: 1040px) {
+  .nav {
+    display: none;
+  }
+
+  .menuButton {
+    display: inline-flex;
+  }
+}

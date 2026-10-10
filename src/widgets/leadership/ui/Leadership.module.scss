@@ -1,0 +1,113 @@
+.wrap {
+  @include container;
+  padding-block: clamp(4.5rem, 10vw, 7.5rem);
+}
+
+.kicker {
+  @include kicker;
+  margin-bottom: 0.9rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5.6vw, 4.7rem);
+  line-height: 0.94;
+  letter-spacing: -0.048em;
+  max-width: 12ch;
+}
+
+.lede {
+  margin-top: 1.25rem;
+  max-width: 36rem;
+  color: $muted;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin-top: clamp(2rem, 4vw, 3.2rem);
+  background: $line;
+  border: 1px solid $line;
+}
+
+.stat {
+  background: $surface;
+  padding: clamp(1.25rem, 2.5vw, 2rem) clamp(1rem, 2vw, 1.5rem) clamp(1.4rem, 2.5vw, 2.1rem);
+}
+
+.statKicker {
+  @include kicker;
+  margin-bottom: 0.8rem;
+}
+
+.value {
+  font-size: clamp(4.5rem, 11vw, 8.5rem);
+  line-height: 0.82;
+  letter-spacing: -0.06em;
+  color: $accent;
+  font-weight: 500;
+}
+
+.prefix {
+  font-family: $mono;
+  font-size: 0.22em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $text;
+  margin-right: 0.2em;
+  position: relative;
+  top: -0.55em;
+}
+
+.caption {
+  margin-top: 0.85rem;
+  max-width: 22ch;
+  color: $muted;
+}
+
+.points {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem 1.5rem;
+  margin-top: clamp(2rem, 4vw, 3.2rem);
+}
+
+.point {
+  border-top: 1px solid $line;
+  padding-top: 0.9rem;
+}
+
+.pointIndex {
+  @include kicker;
+  color: $accent;
+  margin-bottom: 0.55rem;
+}
+
+.pointTitle {
+  font-size: 1.15rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.45rem;
+}
+
+.pointText {
+  color: $muted;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 900px) {
+  .stats,
+  .points {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .title {
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .stats,
+  .points {
+    grid-template-columns: 1fr;
+  }
+}

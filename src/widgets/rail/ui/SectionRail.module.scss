@@ -1,0 +1,40 @@
+.rail {
+  position: fixed;
+  top: 50%;
+  right: 1.15rem;
+  z-index: 30;
+  transform: translateY(-50%);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.link {
+  @include kicker;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  color: rgba(147, 147, 155, 0.7);
+  display: block;
+  text-align: right;
+
+  @include focus;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: $text;
+    }
+  }
+}
+
+.current {
+  color: $accent;
+}
+
+@media (max-width: 1280px) {
+  .rail {
+    display: none;
+  }
+}

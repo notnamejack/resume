@@ -1,0 +1,161 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding: calc(#{$header} + clamp(1.5rem, 4vh, 3rem)) 0 clamp(1.5rem, 4vh, 2.5rem);
+  overflow: clip;
+}
+
+.grid,
+.gridHot {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(245, 245, 247, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(245, 245, 247, 0.045) 1px, transparent 1px);
+  background-size: 84px 84px;
+}
+
+.grid {
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 88%);
+  opacity: 0.7;
+}
+
+.gridHot {
+  opacity: 0.95;
+  mask-image: radial-gradient(440px circle at var(--px, 72%) var(--py, 28%), #000 0%, transparent 72%);
+}
+
+.inner {
+  @include container;
+  align-self: center;
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.kicker {
+  @include kicker;
+}
+
+.stage {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.4vh, 1.9rem);
+  padding-bottom: 0.5rem;
+}
+
+.titleRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 230px);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: end;
+}
+
+.title {
+  font-size: clamp(2.15rem, 5.5vw, 5.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  font-weight: 500;
+}
+
+.line {
+  display: block;
+}
+
+.accent {
+  color: $accent;
+}
+
+.subtitle {
+  margin-top: 1.15rem;
+  @include kicker;
+  color: $text;
+  letter-spacing: 0.14em;
+}
+
+.facts {
+  display: grid;
+  gap: 0.95rem;
+  padding-bottom: 0.35rem;
+}
+
+.fact dt {
+  @include kicker;
+  margin-bottom: 0.2rem;
+}
+
+.fact dd {
+  margin: 0;
+  font-size: 0.98rem;
+  letter-spacing: -0.02em;
+}
+
+.lede {
+  max-width: 38rem;
+  color: $muted;
+  font-size: 1.08rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: fit-content;
+  margin-top: 0.4rem;
+  text-decoration: none;
+  @include kicker;
+
+  @include focus;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 3rem;
+  background: linear-gradient($accent, transparent);
+  transform-origin: top center;
+  animation: scroll-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-pulse {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 860px) {
+  .titleRow {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .facts {
+    grid-template-columns: 1fr;
+  }
+}
