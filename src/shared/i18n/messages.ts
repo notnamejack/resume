@@ -1,5 +1,22 @@
 export type Locale = "en" | "ru";
 
+// Кортежи, а не string[]: пропуск элемента в ru или en ловится компилятором.
+type Widen<T> = T extends string
+  ? string
+  : T extends number
+    ? number
+    : T extends boolean
+      ? boolean
+      : T extends readonly unknown[]
+        ? WidenList<T>
+        : T extends object
+          ? { readonly [K in keyof T]: Widen<T[K]> }
+          : T;
+
+type WidenList<T> = T extends readonly [infer Head, ...infer Rest]
+  ? readonly [Widen<Head>, ...WidenList<Rest>]
+  : readonly [];
+
 const en = {
   meta: {
     title: "Алексей — Senior / Lead Frontend Developer",
@@ -71,7 +88,7 @@ const en = {
   work: {
     kicker: "03 / Work",
     title: "Selected Projects.",
-    lede: "Four Horses Club is taken from the public repository. OdanLab is taken from the live product and the frontend scope I own. The journal repository is closed.",
+    lede: "Four Horses Club is based on the public repository. OdanLab is based on the live product and on the frontend scope I own. The journal's repository is private.",
     openLive: "Open the live site, new tab",
     live: "Live",
     stack: "Stack",
@@ -81,7 +98,7 @@ const en = {
       "four-horses-club": {
         originalTitle: "Клуб четырёх коней",
         summary:
-          "A landing page for the International Vasyuki tournament, after The Twelve Chairs. A hero with a marquee, the lecture and the match, seven stages of Vasyuki’s transformation, and a participants carousel. Adaptive layout with no framework and no build.",
+          "A landing page for the International Vasyuki tournament, inspired by The Twelve Chairs. A hero with a marquee, the lecture and the match, seven stages of Vasyuki’s transformation, and a participants carousel. Adaptive layout with no framework and no build.",
         imageAlt:
           "Hero of the Four Horses Club landing: the headline about turning a provincial town into the capital of the world, tournament support buttons, and a quote marquee.",
         imageCaption: "Hero · 1440",
@@ -118,7 +135,7 @@ const en = {
           },
           {
             title: "Structures and reactions",
-            text: "The interface for structures, reactions, and experimental data is built on Ketcher and wired into the journal and the backend API. The live bundle includes “Ketcher structure editor” and static assets at /ketcher-cloud. The screen shows a substance card and a Draw button.",
+            text: "The interface for structures, reactions, and experimental data is built on Ketcher and wired into the journal and the backend API. The live bundle includes “Ketcher structure editor” and static assets at /ketcher-cloud.",
           },
           {
             title: "Offline",
@@ -148,7 +165,7 @@ const en = {
       "First I separate the product problem from the habitual way of closing it. Who the user is, which constraint the system has, and what will count as done in six months — without that, architecture serves the mock, not the product.",
       "I fix module boundaries, data contracts, and what has to survive a new screen. Feature-Sliced Design and component architecture are how I hold complexity, not a diagram for its own sake.",
       "I cut the work in vertical slices: state, API, interface. Complexity stays in the module that owns it. The rest of the code should not know more than it needs.",
-      "I test the critical paths, and I use review to check that we still share one model. Standards and automation, including AI code review, remove noise so people can talk about decisions.",
+      "I test the critical paths and use review to check that we still share one model. Standards and automated checks, including an AI pass, clear the mechanical comments so the discussion stays on the decisions.",
       "The build, the environments, and the path to the user are part of the system. After release, the architecture has to stay clear to the people who will change it later.",
     ],
   },
@@ -175,7 +192,7 @@ const en = {
       },
       {
         title: "AI Code Review",
-        text: "I automate change review with agents where it strengthens the team and does not remove responsibility.",
+        text: "Agents take a first pass over the diff. What ships is still a decision the team owns.",
       },
     ],
   },
@@ -219,11 +236,11 @@ const en = {
     tagline: "Frontend · Architecture · Leadership",
     top: "Back to top",
   },
-};
+} as const;
 
-export type Messages = typeof en;
+export type Messages = Widen<typeof en>;
 
-const ru: Messages = {
+const ru = {
   meta: {
     title: "Алексей — Senior / Lead Frontend Developer",
     description:
@@ -294,7 +311,7 @@ const ru: Messages = {
   work: {
     kicker: "03 / Проекты",
     title: "Избранные проекты.",
-    lede: "Four Horses Club разобран по открытому коду. OdanLab — по живому продукту и зоне ответственности frontend. Репозиторий журнала закрыт.",
+    lede: "Four Horses Club разобран по открытому коду. OdanLab — по живому продукту и зоне ответственности фронтенда. Репозиторий журнала закрыт.",
     openLive: "Открыть живой сайт, новая вкладка",
     live: "Сайт",
     stack: "Стек",
@@ -311,7 +328,7 @@ const ru: Messages = {
         notes: [
           {
             title: "Карусель участников",
-            text: "Бесконечный цикл на клонах по краям. С 1024px видно 3 карточки, шаг равен ширине карточки и gap; уже — одна карточка на ширину viewport. Счётчик на desktop показывает правую видимую, на mobile — текущую. Автосмена 4 с, сброс по клику, пауза на hover, focus и скрытой вкладке.",
+            text: "Бесконечный цикл на клонах по краям. От 1024px видно три карточки, шаг равен ширине карточки плюс gap; на более узких экранах — одна карточка на всю ширину viewport. Счётчик на десктопе показывает крайнюю правую из видимых карточек, на мобильных — текущую. Автосмена 4 с, сброс по клику, пауза на hover, focus и скрытой вкладке.",
           },
           {
             title: "Этапы на узком экране",
@@ -330,7 +347,7 @@ const ru: Messages = {
       odanlab: {
         originalTitle: "Электронный лабораторный журнал",
         summary:
-          "Журнал для химиков: документирование, систематизация и анализ экспериментов и реакций. На публичном экране карточка вещества и кнопка «Нарисовать». Frontend веду как систему: архитектура, редактор структур, офлайн, ревью.",
+          "Журнал для химиков: документирование, систематизация и анализ экспериментов и реакций. На публичном экране карточка вещества и кнопка «Нарисовать». Веду фронтенд как систему: архитектура, редактор структур, офлайн, ревью.",
         imageAlt:
           "Главный экран OdanLab: заголовок «Электронный лабораторный журнал» и карточка вещества с полями CAS, формулы, молекулярной массы и кнопкой «Нарисовать».",
         imageCaption: "Вещество · 1440",
@@ -341,7 +358,7 @@ const ru: Messages = {
           },
           {
             title: "Структуры и реакции",
-            text: "Интерфейс структур, реакций и экспериментальных данных собран на Ketcher и связан с журналом и backend API. В живом бандле есть «Редактор структур Ketcher» и статика /ketcher-cloud. На экране — карточка вещества и кнопка «Нарисовать».",
+            text: "Интерфейс структур, реакций и экспериментальных данных собран на Ketcher и связан с журналом и бэкенд API. В живом бандле есть «Редактор структур Ketcher» и статика /ketcher-cloud.",
           },
           {
             title: "Офлайн",
@@ -349,7 +366,7 @@ const ru: Messages = {
           },
           {
             title: "Команда",
-            text: "Техническое руководство frontend: архитектурные решения, code review, наставничество и адаптация нового разработчика.",
+            text: "Техническое руководство фронтендом: архитектурные решения, code review, наставничество и адаптация нового разработчика.",
           },
         ],
       },
@@ -365,7 +382,7 @@ const ru: Messages = {
       "Сначала отделяю задачу продукта от привычного способа её закрыть. Кто пользователь, какое ограничение системы и что будет считаться готовым через полгода — без этого архитектура обслуживает макет, а не развитие.",
       "Фиксирую границы модулей, контракты данных и то, что должно пережить смену экрана. Feature-Sliced Design и компонентная архитектура здесь — способ удержать сложность, а не схема ради схемы.",
       "Режу работу вертикальными срезами: состояние, API, интерфейс. Сложность остаётся в модуле, который за неё отвечает. Остальной код не должен знать лишнего.",
-      "Проверяю критичные сценарии, а ревью использую как сверку общей модели. Стандарты и автоматизация, включая AI code review, снимают шум, чтобы люди обсуждали решения.",
+      "Проверяю критичные сценарии и использую ревью как сверку общей модели. Стандарты и автоматические проверки, включая проход AI, убирают механические замечания, и разговор остаётся про решения.",
       "Сборка, окружения и путь до пользователя — часть системы. После релиза архитектура должна оставаться понятной тем, кто придёт позже и будет её менять.",
     ],
   },
@@ -392,7 +409,7 @@ const ru: Messages = {
       },
       {
         title: "Ревью кода с AI",
-        text: "Автоматизирую разбор изменений агентами там, где это усиливает команду и не снимает ответственность.",
+        text: "Агенты делают первый проход по изменениям. Что попадёт в код, по-прежнему решают люди в команде.",
       },
     ],
   },
@@ -421,9 +438,9 @@ const ru: Messages = {
     },
     city: "Иркутск",
     paragraphs: [
-      "Frontend-разработчик и технический лидер с опытом коммерческой разработки более 5 лет.",
-      "Специализируюсь на архитектуре сложных веб-приложений, разработке масштабируемых frontend-решений и внедрении инженерных практик.",
-      "Совмещаю hands-on разработку с техническим руководством, развитием команды и совершенствованием процессов разработки.",
+      "Фронтенд-разработчик и технический лидер с опытом коммерческой разработки более 5 лет.",
+      "Специализируюсь на архитектуре сложных веб-приложений, разработке масштабируемых фронтенд-решений и внедрении инженерных практик.",
+      "Совмещаю практическую разработку с техническим руководством, развитием команды и совершенствованием процессов разработки.",
     ],
     principleLabel: "Принцип",
     principle: "Хорошая архитектура должна помогать продукту развиваться, а команде работать эффективнее.",
@@ -436,6 +453,6 @@ const ru: Messages = {
     tagline: "Фронтенд · Архитектура · Руководство",
     top: "Наверх",
   },
-};
+} as const satisfies Messages;
 
 export const messages: Record<Locale, Messages> = { en, ru };
