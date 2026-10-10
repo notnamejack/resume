@@ -75,6 +75,8 @@ const en = {
     openLive: "Open the live site, new tab",
     live: "Live",
     stack: "Stack",
+    stackMore: "Show {count} more",
+    stackLess: "Show less",
     cases: {
       "four-horses-club": {
         originalTitle: "Клуб четырёх коней",
@@ -296,6 +298,8 @@ const ru: Messages = {
     openLive: "Открыть живой сайт, новая вкладка",
     live: "Сайт",
     stack: "Стек",
+    stackMore: "Ещё {count}",
+    stackLess: "Свернуть",
     cases: {
       "four-horses-club": {
         originalTitle: "Клуб четырёх коней",

@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
-import { projects, type ProjectLayout } from "@/shared/config/projects";
+import { useState } from "react";
+import { projectIndex, projectLayout, projects, type ProjectLayout, type ProjectSlug } from "@/shared/config/projects";
 import { cn } from "@/shared/lib/cn";
 import { usePreferences } from "@/shared/preferences/preferences";
 import { Reveal } from "@/shared/ui/Reveal/Reveal";
@@ -12,8 +13,11 @@ const layoutClass: Record<ProjectLayout, string> = {
   stacked: styles.stacked,
 };
 
+const STACK_PREVIEW = 6;
+
 export function Projects() {
   const { t } = usePreferences();
+  const [openStacks, setOpenStacks] = useState<Partial<Record<ProjectSlug, boolean>>>({});
 
   return (
     <Section id="work" labelledBy="work-title">
@@ -31,8 +35,12 @@ export function Projects() {
         </Reveal>
 
         <div className={styles.list}>
-          {projects.map((project) => {
+          {projects.map((project, position) => {
             const copy = t.work.cases[project.slug];
+            const layout = projectLayout(position, project.layout);
+            const expanded = openStacks[project.slug] ?? false;
+            const hidden = Math.max(0, project.stack.length - STACK_PREVIEW);
+            const stack = expanded || hidden === 0 ? project.stack : project.stack.slice(0, STACK_PREVIEW);
             const image = (
               <img
                 className={styles.shot}
@@ -49,7 +57,7 @@ export function Projects() {
             return (
               <article
                 key={project.slug}
-                className={cn(styles.case, layoutClass[project.layout])}
+                className={cn(styles.case, layoutClass[layout])}
                 aria-labelledby={`${project.slug}-title`}
               >
                 <figure className={styles.media}>
@@ -68,13 +76,13 @@ export function Projects() {
                   )}
                   <figcaption className={styles.caption}>
                     <span>{copy.imageCaption}</span>
-                    <span>{project.meta.join(" · ")}</span>
+                    {project.meta && project.meta.length > 0 ? <span>{project.meta.join(" · ")}</span> : null}
                   </figcaption>
                 </figure>
 
                 <div>
                   <p className={styles.index}>
-                    {project.index} / {project.year}
+                    {projectIndex(position)} / {project.year}
                   </p>
                   <h3 id={`${project.slug}-title`} className={styles.name}>
                     {project.title}
@@ -90,9 +98,25 @@ export function Projects() {
                     ))}
                   </div>
                   <ul className={styles.stack} aria-label={t.work.stack}>
-                    {project.stack.map((item) => (
+                    {stack.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
+                    {hidden > 0 ? (
+                      <li>
+                        <button
+                          type="button"
+                          className={styles.more}
+                          aria-expanded={expanded}
+                          onClick={() =>
+                            setOpenStacks((current) => ({ ...current, [project.slug]: !expanded }))
+                          }
+                        >
+                          {expanded
+                            ? t.work.stackLess
+                            : t.work.stackMore.replace("{count}", String(hidden))}
+                        </button>
+                      </li>
+                    ) : null}
                   </ul>
                   <div className={styles.links}>
                     {project.github ? (
