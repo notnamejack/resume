@@ -1,6 +1,6 @@
 # Алексей — портфолио
 
-Персональный сайт Senior / Lead Frontend Developer. Отдельный продукт, не замена профильному README GitHub: страница [github.com/notnamejack](https://github.com/notnamejack) живёт в репозитории `notnamejack/notnamejack`.
+Персональный сайт Senior Frontend/Team Lead Developer. Отдельный продукт, не замена профильному README GitHub: страница [github.com/notnamejack](https://github.com/notnamejack) живёт в репозитории `notnamejack/notnamejack`.
 
 Публичные кейсы: [Four Horses Club](https://github.com/notnamejack/four-horses-club) и [OdanLab](https://lab.odanchem.org/ru-ru/). У журнала нет открытого репозитория — описание по живому интерфейсу и зоне ответственности фронтенда. Следующий кейс добавлять только после разбора кода или подтверждённого скоупа.
 

@@ -3,8 +3,7 @@ import { normalizeSiteUrl } from "@/shared/config/site-url";
 export const siteUrl = normalizeSiteUrl(import.meta.env.VITE_SITE_URL);
 
 export const site = {
-  // Каноническое имя. То, что видно на странице, берётся из messages.identity,
-  // чтобы EN и RU не тянули одну и ту же строку отсюда.
+  // Кириллица. На странице имя берётся из messages.identity: EN Alexey, RU Алексей.
   name: "Алексей",
   handle: "notnamejack",
   github: "https://github.com/notnamejack",

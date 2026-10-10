@@ -19,18 +19,18 @@ type WidenList<T> = T extends readonly [infer Head, ...infer Rest]
 
 const en = {
   meta: {
-    title: "Алексей — Senior / Lead Frontend Developer",
+    title: "Alexey — Senior Frontend/Team Lead Developer",
     description:
-      "Aleksei, Senior / Lead Frontend Developer. Application architecture, complex interfaces, and engineering process in teams.",
-    ogTitle: "Алексей — Frontend Engineer. Architecture. Leadership.",
+      "Alexey, Senior Frontend/Team Lead Developer. Application architecture, complex interfaces, and engineering process in teams.",
+    ogTitle: "Alexey — Senior Frontend/Team Lead Developer",
     ogDescription:
-      "Senior / Lead Frontend Developer. Application architecture, complex interfaces, and engineering process in teams.",
-    twitterTitle: "Алексей — Frontend Engineer. Architecture. Leadership.",
+      "Senior Frontend/Team Lead Developer. Application architecture, complex interfaces, and engineering process in teams.",
+    twitterTitle: "Alexey — Senior Frontend/Team Lead Developer",
     twitterDescription:
-      "Senior / Lead Frontend Developer. Application architecture, complex interfaces, engineering process.",
+      "Senior Frontend/Team Lead Developer. Application architecture, complex interfaces, engineering process.",
   },
   identity: {
-    name: "Алексей",
+    name: "Alexey",
     pronouns: "he/him",
   },
   controls: {
@@ -61,7 +61,7 @@ const en = {
   hero: {
     kicker: "01 / Portfolio",
     lines: ["Frontend Engineer.", "Architecture.", "Leadership."],
-    role: "Senior / Lead Frontend Developer",
+    role: "Senior Frontend/Team Lead Developer",
     lede: "I design web application architecture, build complex interfaces, and set up engineering process inside teams.",
     projects: "Projects",
     contact: "Contact",
@@ -242,15 +242,15 @@ export type Messages = Widen<typeof en>;
 
 const ru = {
   meta: {
-    title: "Алексей — Senior / Lead Frontend Developer",
+    title: "Алексей — Senior Frontend/Team Lead Developer",
     description:
-      "Алексей — Senior / Lead Frontend Developer. Архитектура веб-приложений, сложные интерфейсы и инженерные процессы в командах.",
-    ogTitle: "Алексей — Фронтенд-инженер. Архитектура. Руководство.",
+      "Алексей — Senior Frontend/Team Lead Developer. Архитектура веб-приложений, сложные интерфейсы и инженерные процессы в командах.",
+    ogTitle: "Алексей — Senior Frontend/Team Lead Developer",
     ogDescription:
-      "Алексей — Senior / Lead Frontend Developer. Архитектура веб-приложений, сложные интерфейсы и инженерные процессы в командах.",
-    twitterTitle: "Алексей — Фронтенд-инженер. Архитектура. Руководство.",
+      "Алексей — Senior Frontend/Team Lead Developer. Архитектура веб-приложений, сложные интерфейсы и инженерные процессы в командах.",
+    twitterTitle: "Алексей — Senior Frontend/Team Lead Developer",
     twitterDescription:
-      "Алексей — Senior / Lead Frontend Developer. Архитектура веб-приложений, сложные интерфейсы и инженерные процессы в командах.",
+      "Алексей — Senior Frontend/Team Lead Developer. Архитектура веб-приложений, сложные интерфейсы и инженерные процессы в командах.",
   },
   identity: {
     name: "Алексей",
@@ -284,7 +284,7 @@ const ru = {
   hero: {
     kicker: "01 / Портфолио",
     lines: ["Фронтенд-инженер.", "Архитектура.", "Руководство."],
-    role: "Старший фронтенд-разработчик и тимлид",
+    role: "Senior Frontend/Team Lead Developer",
     lede: "Проектирую архитектуру веб-приложений, разрабатываю сложные интерфейсы и выстраиваю инженерные процессы в командах.",
     projects: "Проекты",
     contact: "Контакты",

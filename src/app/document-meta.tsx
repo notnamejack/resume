@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { site } from "@/shared/config/site";
 import type { Locale, Messages } from "@/shared/i18n/messages";
 import { usePreferences } from "@/shared/preferences/preferences";
 
@@ -12,18 +11,19 @@ function setMeta(selector: string, content: string) {
   document.querySelector(selector)?.setAttribute("content", content);
 }
 
-function updateJsonLd(jobTitle: string, description: string) {
+function updateJsonLd(name: string, jobTitle: string, description: string, locale: Locale) {
   const script = document.querySelector('script[type="application/ld+json"]');
   if (!script?.textContent) return;
 
   try {
     const data = JSON.parse(script.textContent) as {
-      mainEntity?: { jobTitle?: string; description?: string; name?: string };
+      mainEntity?: { jobTitle?: string; description?: string; name?: string; alternateName?: string | string[] };
     };
     if (!data.mainEntity) return;
+    data.mainEntity.name = name;
+    data.mainEntity.alternateName = [locale === "en" ? "Алексей" : "Alexey", "notnamejack"];
     data.mainEntity.jobTitle = jobTitle;
     data.mainEntity.description = description;
-    data.mainEntity.name = site.name;
     script.textContent = JSON.stringify(data);
   } catch {
     // Статичная разметка в index.html остаётся запасным вариантом.
@@ -43,7 +43,9 @@ export function useDocumentMeta(locale: Locale, t: Messages) {
     setMeta('meta[property="og:image:alt"]', t.meta.ogTitle);
     setMeta('meta[name="twitter:title"]', t.meta.twitterTitle);
     setMeta('meta[name="twitter:description"]', t.meta.twitterDescription);
-    updateJsonLd(t.hero.role, t.meta.description);
+    setMeta('meta[property="og:site_name"]', t.identity.name);
+    setMeta('meta[name="author"]', t.identity.name);
+    updateJsonLd(t.identity.name, t.hero.role, t.meta.description, locale);
   }, [locale, t]);
 }
 

@@ -52,7 +52,7 @@ export const projects: Project[] = [
   {
     slug: "odanlab",
     title: "OdanLab",
-    year: "2026",
+    year: "2025",
     stack: [
       "React",
       "TypeScript",
