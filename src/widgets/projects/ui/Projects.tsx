@@ -24,7 +24,8 @@ export function Projects() {
               </h2>
             </div>
             <p className={styles.lede}>
-              Публичный кейс добавляю после разбора реального кода. Сейчас в центре — Four Horses Club.
+              Four Horses Club разобран по открытому коду. OdanLab — по живому продукту и зоне ответственности
+              frontend. Репозиторий журнала закрыт.
             </p>
           </div>
         </Reveal>
@@ -65,7 +66,7 @@ export function Projects() {
                     <div className={styles.frame}>{image}</div>
                   )}
                   <figcaption className={styles.caption}>
-                    <span>Hero · 1440</span>
+                    <span>{project.imageCaption}</span>
                     <span>{project.meta.join(" · ")}</span>
                   </figcaption>
                 </figure>
@@ -93,11 +94,13 @@ export function Projects() {
                     ))}
                   </ul>
                   <div className={styles.links}>
-                    <a className={styles.link} href={project.github} target="_blank" rel="noreferrer noopener">
-                      GitHub
-                      <ArrowUpRight size={16} strokeWidth={1.5} aria-hidden="true" />
-                      <span className="sr-only">, откроется в новой вкладке</span>
-                    </a>
+                    {project.github ? (
+                      <a className={styles.link} href={project.github} target="_blank" rel="noreferrer noopener">
+                        GitHub
+                        <ArrowUpRight size={16} strokeWidth={1.5} aria-hidden="true" />
+                        <span className="sr-only">, откроется в новой вкладке</span>
+                      </a>
+                    ) : null}
                     {project.live ? (
                       <a className={styles.link} href={project.live} target="_blank" rel="noreferrer noopener">
                         Live

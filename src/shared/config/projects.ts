@@ -1,9 +1,10 @@
 import shot from "@/assets/projects/four-horses-club.webp";
+import odanlab from "@/assets/projects/odanlab.webp";
 
 /**
- * Следующий кейс — только после разбора реального репозитория.
+ * Кейс — по коду репозитория или по живому продукту и подтверждённой зоне ответственности.
  * layout чередовать: mediaStart → mediaEnd → stacked.
- * Не описывать API, стор или фичи, которых нет в коде.
+ * Не описывать API, стор или фичи, которых нет в коде и которые автор не подтвердил.
  */
 export type ProjectLayout = "mediaStart" | "mediaEnd" | "stacked";
 
@@ -22,10 +23,11 @@ export type Project = {
   notes: ProjectNote[];
   stack: string[];
   meta: string[];
-  github: string;
+  github?: string;
   live?: string;
   image: string;
   imageAlt: string;
+  imageCaption: string;
   imageWidth: number;
   imageHeight: number;
   layout: ProjectLayout;
@@ -65,8 +67,57 @@ export const projects: Project[] = [
     image: shot,
     imageAlt:
       "Главный экран лендинга «Клуб четырёх коней»: заголовок «Превратите уездный город в столицу земного шара», кнопки поддержки турнира и бегущая строка с цитатой.",
+    imageCaption: "Hero · 1440",
     imageWidth: 1600,
     imageHeight: 875,
     layout: "mediaStart",
+  },
+  {
+    slug: "odanlab",
+    index: "02",
+    title: "OdanLab",
+    originalTitle: "Электронный лабораторный журнал",
+    year: "2026",
+    summary:
+      "Журнал для химиков: документирование, систематизация и анализ экспериментов и реакций. На публичном экране карточка вещества и кнопка «Нарисовать». Frontend веду как систему: архитектура, редактор структур, офлайн, ревью.",
+    notes: [
+      {
+        title: "Архитектура",
+        text: "Стек выбран под журнал: React, TypeScript, Redux Toolkit, RTK Query, SCSS, Webpack. Архитектурные решения, контроль качества и единый подход по кодовой базе — на мне.",
+      },
+      {
+        title: "Структуры и реакции",
+        text: "Интерфейс структур, реакций и экспериментальных данных собран на Ketcher и связан с журналом и backend API. В живом бандле есть «Редактор структур Ketcher» и статика /ketcher-cloud. На экране — карточка вещества и кнопка «Нарисовать».",
+      },
+      {
+        title: "Офлайн",
+        text: "Журнал работает без сети: данные эксперимента хранятся локально в IndexedDB.",
+      },
+      {
+        title: "Команда",
+        text: "Техническое руководство frontend: архитектурные решения, code review, наставничество и адаптация нового разработчика.",
+      },
+    ],
+    stack: [
+      "React",
+      "TypeScript",
+      "Redux Toolkit",
+      "RTK Query",
+      "IndexedDB",
+      "Ketcher",
+      "SCSS",
+      "Jest",
+      "Cypress",
+      "Webpack",
+    ],
+    meta: ["React", "Ketcher", "Redux"],
+    live: "https://lab.odanchem.org/ru-ru/",
+    image: odanlab,
+    imageAlt:
+      "Главный экран OdanLab: заголовок «Электронный лабораторный журнал» и карточка вещества с полями CAS, формулы, молекулярной массы и кнопкой «Нарисовать».",
+    imageCaption: "Вещество · 1440",
+    imageWidth: 1600,
+    imageHeight: 877,
+    layout: "mediaEnd",
   },
 ];
