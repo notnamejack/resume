@@ -1,0 +1,152 @@
+.wrap {
+  @include container;
+  padding-block: clamp(4.5rem, 10vw, 7.5rem);
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(16rem, 0.8fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: end;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.kicker {
+  @include kicker;
+  margin-bottom: 0.9rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5.4vw, 4.5rem);
+  line-height: 0.94;
+  letter-spacing: -0.048em;
+  max-width: 10ch;
+}
+
+.lede {
+  color: $muted;
+  max-width: 34ch;
+  padding-bottom: 0.4rem;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1px;
+  background: $line;
+  border: 1px solid $line;
+}
+
+.cell {
+  grid-column: span 6;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: clamp(1.2rem, 2vw, 1.7rem);
+  background: $bg;
+  transition: background-color 0.25s $ease;
+}
+
+.index {
+  @include kicker;
+  transition: color 0.25s $ease;
+}
+
+.name {
+  font-size: clamp(1.45rem, 2vw, 1.9rem);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+
+.text {
+  color: $muted;
+  max-width: 46ch;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  margin-top: auto;
+  @include kicker;
+  color: $text;
+}
+
+.c01 {
+  grid-column: span 7;
+  min-height: 360px;
+
+  .name {
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    max-width: 12ch;
+  }
+
+  .text {
+    margin-top: auto;
+  }
+}
+
+.c02 {
+  grid-column: span 5;
+
+  .index {
+    align-self: flex-end;
+  }
+}
+
+.c03 {
+  grid-column: span 5;
+  justify-content: flex-end;
+}
+
+.c04 {
+  grid-column: span 7;
+
+  .meta {
+    font-family: $sans;
+    font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+    letter-spacing: -0.03em;
+    text-transform: none;
+    font-weight: 500;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cell:hover {
+    background: $surface;
+  }
+
+  .cell:hover .index {
+    color: $accent;
+  }
+}
+
+@media (max-width: 860px) {
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .title {
+    max-width: none;
+  }
+
+  .c01,
+  .c02,
+  .c03,
+  .c04 {
+    grid-column: span 12;
+    min-height: 0;
+    justify-content: flex-start;
+  }
+
+  .c02 .index {
+    align-self: auto;
+  }
+
+  .c01 .text,
+  .text {
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,197 @@
+.wrap {
+  @include container;
+  padding-block: clamp(4.5rem, 10vw, 7.5rem);
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: end;
+  margin-bottom: clamp(2.2rem, 5vw, 3.5rem);
+}
+
+.kicker {
+  @include kicker;
+  margin-bottom: 0.9rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5.4vw, 4.5rem);
+  line-height: 0.94;
+  letter-spacing: -0.048em;
+  max-width: 11ch;
+}
+
+.lede {
+  color: $muted;
+  max-width: 36ch;
+  padding-bottom: 0.35rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4rem, 8vw, 6.5rem);
+}
+
+.mediaStart {
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+}
+
+.case {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+  gap: clamp(1.5rem, 4vw, 3.25rem);
+  align-items: start;
+}
+
+.case.stacked {
+  grid-template-columns: 1fr;
+}
+
+.mediaEnd .media {
+  order: 2;
+}
+
+.media {
+  position: sticky;
+  top: 6rem;
+}
+
+.frame {
+  display: block;
+  overflow: hidden;
+  border: 1px solid $line;
+  background: $surface;
+  line-height: 0;
+  text-decoration: none;
+
+  @include focus;
+}
+
+.shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: scale(1.001);
+  transition: transform 0.7s $ease;
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.4rem 1rem;
+  margin-top: 0.7rem;
+  @include kicker;
+}
+
+.index {
+  @include kicker;
+  margin-bottom: 0.75rem;
+}
+
+.name {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.original {
+  margin-top: 0.45rem;
+  color: $muted;
+}
+
+.summary {
+  margin-top: 1.15rem;
+  color: $muted;
+}
+
+.notes {
+  margin-top: 1.5rem;
+  border-top: 1px solid $line;
+}
+
+.note {
+  padding: 0.95rem 0;
+  border-bottom: 1px solid $line;
+}
+
+.noteTitle {
+  font-size: 0.98rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.3rem;
+}
+
+.noteText {
+  color: $muted;
+  font-size: 0.95rem;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin-top: 1.2rem;
+  font-size: 1.05rem;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1.35rem;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  border-bottom: 1px solid $line-strong;
+  padding-bottom: 0.15rem;
+
+  @include focus;
+
+  svg {
+    transition: transform 0.2s $ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: $accent;
+      border-bottom-color: $accent;
+    }
+
+    &:hover svg {
+      transform: translate(2px, -2px);
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .frame:hover .shot {
+    transform: scale(1.03);
+  }
+}
+
+@media (max-width: 960px) {
+  .intro,
+  .case,
+  .stacked {
+    grid-template-columns: 1fr;
+  }
+
+  .media,
+  .mediaEnd .media {
+    position: static;
+    order: 0;
+  }
+
+  .title {
+    max-width: none;
+  }
+}

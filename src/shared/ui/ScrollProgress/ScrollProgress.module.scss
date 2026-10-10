@@ -1,0 +1,12 @@
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: $accent;
+  transform: scaleX(0);
+  transform-origin: left center;
+  z-index: 70;
+  pointer-events: none;
+}

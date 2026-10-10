@@ -1,0 +1,102 @@
+.wrap {
+  @include container;
+  padding-block: clamp(4.5rem, 10vw, 7.5rem);
+}
+
+.intro {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  max-width: 46rem;
+}
+
+.kicker {
+  @include kicker;
+  margin-bottom: 0.9rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5.4vw, 4.5rem);
+  line-height: 0.94;
+  letter-spacing: -0.048em;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-top: 1px solid $line;
+}
+
+.tab {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid $line;
+  border-bottom: 1px solid $line;
+  text-align: left;
+  padding: 1rem 0.9rem 1.15rem 0;
+  cursor: pointer;
+  min-height: 6.5rem;
+
+  @include focus;
+
+  &:last-child {
+    border-right: 0;
+  }
+
+  &[aria-selected="true"] {
+    box-shadow: inset 0 -2px 0 $accent;
+  }
+}
+
+.tabIndex {
+  display: block;
+  @include kicker;
+  margin-bottom: 0.55rem;
+}
+
+.tabTitle {
+  display: block;
+  font-size: 0.98rem;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: $muted;
+}
+
+.tab[aria-selected="true"] .tabTitle,
+.tab[aria-selected="true"] .tabIndex {
+  color: $text;
+}
+
+.tab[aria-selected="true"] .tabIndex {
+  color: $accent;
+}
+
+.panel {
+  max-width: 48rem;
+  padding-top: clamp(1.6rem, 3vw, 2.6rem);
+  min-height: 10rem;
+
+  @include focus;
+}
+
+.statement {
+  font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+  line-height: 1.35;
+  letter-spacing: -0.033em;
+}
+
+.hint {
+  margin-top: 1.4rem;
+  @include kicker;
+}
+
+@media (max-width: 800px) {
+  .tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .tab {
+    min-height: 0;
+    padding-right: 0;
+    border-right: 0;
+  }
+}

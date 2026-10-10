@@ -1,0 +1,77 @@
+.wrap {
+  @include container;
+  padding-block: clamp(4.5rem, 11vw, 8rem);
+}
+
+.kicker {
+  @include kicker;
+  margin-bottom: 0.9rem;
+}
+
+.title {
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  max-width: 12ch;
+}
+
+.accent {
+  color: $accent;
+}
+
+.list {
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+  border-bottom: 1px solid $line;
+}
+
+.link {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: baseline;
+  padding: 1.25rem 0;
+  border-top: 1px solid $line;
+  text-decoration: none;
+
+  @include focus;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover .value,
+    &:hover .icon {
+      color: $accent;
+    }
+
+    &:hover .icon {
+      transform: translate(3px, -3px);
+    }
+  }
+}
+
+.label {
+  @include kicker;
+}
+
+.value {
+  font-size: clamp(1.4rem, 3vw, 2.3rem);
+  letter-spacing: -0.04em;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+  transition: color 0.2s $ease;
+}
+
+.icon {
+  color: $muted;
+  transition:
+    color 0.2s $ease,
+    transform 0.2s $ease;
+}
+
+@media (max-width: 640px) {
+  .link {
+    grid-template-columns: 1fr auto;
+  }
+
+  .label {
+    grid-column: 1 / -1;
+  }
+}
