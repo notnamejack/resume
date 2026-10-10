@@ -2,11 +2,13 @@ import { AnimatePresence, motion } from "motion/react";
 import { useRef, useState, type KeyboardEvent } from "react";
 import { processSteps } from "@/shared/config/process";
 import { ease } from "@/shared/lib/motion";
+import { usePreferences } from "@/shared/preferences/preferences";
 import { Reveal } from "@/shared/ui/Reveal/Reveal";
 import { Section } from "@/shared/ui/Section/Section";
 import styles from "./Process.module.scss";
 
 export function Process() {
+  const { t } = usePreferences();
   const [active, setActive] = useState(0);
   const tabsRef = useRef<Array<HTMLButtonElement | null>>([]);
   const step = processSteps[active] ?? processSteps[0];
@@ -45,7 +47,7 @@ export function Process() {
           </header>
         </Reveal>
 
-        <div className={styles.tabs} role="tablist" aria-label="Как я подхожу к разработке" aria-orientation="horizontal">
+        <div className={styles.tabs} role="tablist" aria-label={t.process.tabs} aria-orientation="horizontal">
           {processSteps.map((item, index) => (
             <button
               key={item.id}
@@ -86,10 +88,10 @@ export function Process() {
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.22, ease }}
             >
-              {step.text}
+              {t.process.steps[active]}
             </motion.p>
           </AnimatePresence>
-          <p className={styles.hint}>Стрелки переключают этап</p>
+          <p className={styles.hint}>{t.process.hint}</p>
         </div>
       </div>
     </Section>

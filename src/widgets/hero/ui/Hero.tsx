@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { motion } from "motion/react";
-import { profileFacts, site } from "@/shared/config/site";
+import { site } from "@/shared/config/site";
+import { usePreferences } from "@/shared/preferences/preferences";
 import { cn } from "@/shared/lib/cn";
 import { ease } from "@/shared/lib/motion";
 import { Button } from "@/shared/ui/Button/Button";
@@ -18,6 +19,7 @@ const item = {
 };
 
 export function Hero() {
+  const { t } = usePreferences();
   const rootRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -63,7 +65,7 @@ export function Hero() {
               </motion.p>
             </div>
             <motion.dl className={styles.facts} variants={item}>
-              {profileFacts.map((fact) => (
+              {t.hero.facts.map((fact) => (
                 <div key={fact.label} className={styles.fact}>
                   <dt>{fact.label}</dt>
                   <dd>{fact.value}</dd>
@@ -72,21 +74,20 @@ export function Hero() {
             </motion.dl>
           </div>
           <motion.p className={styles.lede} variants={item}>
-            Проектирую архитектуру веб-приложений, разрабатываю сложные интерфейсы и выстраиваю
-            инженерные процессы в командах.
+            {t.hero.lede}
           </motion.p>
           <motion.div className={styles.actions} variants={item}>
             <Button href="#work" variant="primary">
-              Проекты
+              {t.hero.projects}
             </Button>
-            <Button href="#contact">Контакты</Button>
+            <Button href="#contact">{t.hero.contact}</Button>
             <Button href={site.github} external>
               <GithubIcon size={16} />
               GitHub
-              <span className="sr-only">, откроется в новой вкладке</span>
+              <span className="sr-only">{t.newTab}</span>
             </Button>
           </motion.div>
-          <motion.a className={styles.scroll} href="#expertise" aria-label="К разделу экспертизы" variants={item}>
+          <motion.a className={styles.scroll} href="#expertise" aria-label={t.hero.scroll} variants={item}>
             <span aria-hidden="true">Scroll</span>
             <span className={styles.scrollLine} aria-hidden="true" />
           </motion.a>

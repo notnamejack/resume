@@ -11,12 +11,6 @@ export const site = {
   telegram: "",
 };
 
-export const profileFacts = [
-  { label: "Локация", value: site.location },
-  { label: "Опыт", value: "5+ лет" },
-  { label: "Формат", value: "Hands-on и руководство" },
-] as const;
-
 export type ContactLink = {
   id: string;
   label: string;

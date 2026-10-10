@@ -4,11 +4,46 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg: #0d0d0f;
+  --surface: #17171b;
+  --text: #f5f5f7;
+  --muted: #93939b;
+  --accent: #c7ff10;
+  --accent-text: #c7ff10;
+  --accent-ink: #0d0d0f;
+  --line: rgba(245, 245, 247, 0.12);
+  --line-strong: rgba(245, 245, 247, 0.22);
+  --header-bg: rgba(13, 13, 15, 0.82);
+  --overlay: rgba(13, 13, 15, 0.96);
+  --scrollbar: #2c2c32;
+  --grid-line: rgba(245, 245, 247, 0.045);
+  --rail: rgba(147, 147, 155, 0.7);
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #f4f4f0;
+  --surface: #ffffff;
+  --text: #141416;
+  --muted: #5c5c64;
+  --accent: #c7ff10;
+  --accent-text: #3d5600;
+  --accent-ink: #141416;
+  --line: rgba(20, 20, 22, 0.12);
+  --line-strong: rgba(20, 20, 22, 0.2);
+  --header-bg: rgba(244, 244, 240, 0.88);
+  --overlay: rgba(244, 244, 240, 0.97);
+  --scrollbar: #c4c4bc;
+  --grid-line: rgba(20, 20, 22, 0.07);
+  --rail: rgba(92, 92, 100, 0.75);
+  color-scheme: light;
+}
+
 html {
   scroll-behavior: smooth;
-  color-scheme: dark;
   scrollbar-width: thin;
-  scrollbar-color: #2c2c32 $bg;
+  scrollbar-color: var(--scrollbar) var(--bg);
 }
 
 body {
@@ -23,6 +58,9 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
+  transition:
+    background-color 0.2s $ease,
+    color 0.2s $ease;
 }
 
 h1,
@@ -80,7 +118,7 @@ ol {
 
 ::selection {
   background: $accent;
-  color: $bg;
+  color: $accent-ink;
 }
 
 .sr-only {

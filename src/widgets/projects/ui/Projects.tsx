@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { projects, type ProjectLayout } from "@/shared/config/projects";
 import { cn } from "@/shared/lib/cn";
+import { usePreferences } from "@/shared/preferences/preferences";
 import { Reveal } from "@/shared/ui/Reveal/Reveal";
 import { Section } from "@/shared/ui/Section/Section";
 import styles from "./Projects.module.scss";
@@ -12,6 +13,8 @@ const layoutClass: Record<ProjectLayout, string> = {
 };
 
 export function Projects() {
+  const { t } = usePreferences();
+
   return (
     <Section id="work" labelledBy="work-title">
       <div className={styles.wrap}>
@@ -23,22 +26,20 @@ export function Projects() {
                 Selected Projects.
               </h2>
             </div>
-            <p className={styles.lede}>
-              Four Horses Club разобран по открытому коду. OdanLab — по живому продукту и зоне ответственности
-              frontend. Репозиторий журнала закрыт.
-            </p>
+            <p className={styles.lede}>{t.work.lede}</p>
           </div>
         </Reveal>
 
         <div className={styles.list}>
           {projects.map((project) => {
+            const copy = t.work.cases[project.slug];
             const image = (
               <img
                 className={styles.shot}
                 src={project.image}
                 width={project.imageWidth}
                 height={project.imageHeight}
-                alt={project.imageAlt}
+                alt={copy.imageAlt}
                 loading="lazy"
                 decoding="async"
                 sizes="(max-width: 960px) 100vw, 58vw"
@@ -60,13 +61,13 @@ export function Projects() {
                       rel="noreferrer noopener"
                     >
                       {image}
-                      <span className="sr-only">Открыть живой сайт, новая вкладка</span>
+                      <span className="sr-only">{t.work.openLive}</span>
                     </a>
                   ) : (
                     <div className={styles.frame}>{image}</div>
                   )}
                   <figcaption className={styles.caption}>
-                    <span>{project.imageCaption}</span>
+                    <span>{copy.imageCaption}</span>
                     <span>{project.meta.join(" · ")}</span>
                   </figcaption>
                 </figure>
@@ -78,17 +79,17 @@ export function Projects() {
                   <h3 id={`${project.slug}-title`} className={styles.name}>
                     {project.title}
                   </h3>
-                  <p className={styles.original}>{project.originalTitle}</p>
-                  <p className={styles.summary}>{project.summary}</p>
+                  <p className={styles.original}>{copy.originalTitle}</p>
+                  <p className={styles.summary}>{copy.summary}</p>
                   <div className={styles.notes}>
-                    {project.notes.map((note) => (
+                    {copy.notes.map((note) => (
                       <div key={note.title} className={styles.note}>
                         <h4 className={styles.noteTitle}>{note.title}</h4>
                         <p className={styles.noteText}>{note.text}</p>
                       </div>
                     ))}
                   </div>
-                  <ul className={styles.stack} aria-label="Стек">
+                  <ul className={styles.stack} aria-label={t.work.stack}>
                     {project.stack.map((item) => (
                       <li key={item}>{item}</li>
                     ))}
@@ -98,14 +99,14 @@ export function Projects() {
                       <a className={styles.link} href={project.github} target="_blank" rel="noreferrer noopener">
                         GitHub
                         <ArrowUpRight size={16} strokeWidth={1.5} aria-hidden="true" />
-                        <span className="sr-only">, откроется в новой вкладке</span>
+                        <span className="sr-only">{t.newTab}</span>
                       </a>
                     ) : null}
                     {project.live ? (
                       <a className={styles.link} href={project.live} target="_blank" rel="noreferrer noopener">
                         Live
                         <ArrowUpRight size={16} strokeWidth={1.5} aria-hidden="true" />
-                        <span className="sr-only">, откроется в новой вкладке</span>
+                        <span className="sr-only">{t.newTab}</span>
                       </a>
                     ) : null}
                   </div>

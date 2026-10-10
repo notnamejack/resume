@@ -166,8 +166,8 @@
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      color: $accent;
-      border-bottom-color: $accent;
+      color: $accent-text;
+      border-bottom-color: $accent-text;
     }
 
     &:hover svg {

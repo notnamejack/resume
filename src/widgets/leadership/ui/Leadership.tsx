@@ -1,9 +1,12 @@
-import { leadershipPoints, leadershipStats } from "@/shared/config/leadership";
+import { leadershipStats } from "@/shared/config/leadership";
+import { usePreferences } from "@/shared/preferences/preferences";
 import { Reveal } from "@/shared/ui/Reveal/Reveal";
 import { Section } from "@/shared/ui/Section/Section";
 import styles from "./Leadership.module.scss";
 
 export function Leadership() {
+  const { t } = usePreferences();
+
   return (
     <Section id="leadership" labelledBy="leadership-title" tone="raised">
       <div className={styles.wrap}>
@@ -12,28 +15,30 @@ export function Leadership() {
           <h2 id="leadership-title" className={styles.title} lang="en">
             Engineering is a team effort.
           </h2>
-          <p className={styles.lede}>
-            Руководство для меня — это ясность решений и среда, в которой инженеры делают работу лучше.
-          </p>
+          <p className={styles.lede}>{t.leadership.lede}</p>
         </Reveal>
 
         <div className={styles.stats}>
-          {leadershipStats.map((stat) => (
-            <article key={stat.kicker} className={styles.stat}>
-              <p className={styles.statKicker}>{stat.kicker}</p>
-              <p className={styles.value}>
-                {stat.prefix ? <span className={styles.prefix}>{stat.prefix}</span> : null}
-                {stat.value}
-              </p>
-              <p className={styles.caption}>{stat.caption}</p>
-            </article>
-          ))}
+          {leadershipStats.map((stat, index) => {
+            const copy = t.leadership.stats[index];
+            if (!copy) return null;
+            return (
+              <article key={copy.kicker} className={styles.stat}>
+                <p className={styles.statKicker}>{copy.kicker}</p>
+                <p className={styles.value}>
+                  {copy.prefix ? <span className={styles.prefix}>{copy.prefix}</span> : null}
+                  {stat.value}
+                </p>
+                <p className={styles.caption}>{copy.caption}</p>
+              </article>
+            );
+          })}
         </div>
 
         <div className={styles.points}>
-          {leadershipPoints.map((point) => (
-            <article key={point.index} className={styles.point}>
-              <p className={styles.pointIndex}>{point.index}</p>
+          {t.leadership.points.map((point, index) => (
+            <article key={point.title} className={styles.point}>
+              <p className={styles.pointIndex}>{String(index + 1).padStart(2, "0")}</p>
               <h3 className={styles.pointTitle}>{point.title}</h3>
               <p className={styles.pointText}>{point.text}</p>
             </article>

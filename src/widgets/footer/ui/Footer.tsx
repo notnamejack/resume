@@ -1,7 +1,9 @@
 import { site } from "@/shared/config/site";
+import { usePreferences } from "@/shared/preferences/preferences";
 import styles from "./Footer.module.scss";
 
 export function Footer() {
+  const { t } = usePreferences();
   const year = new Date().getFullYear();
 
   return (
@@ -13,7 +15,7 @@ export function Footer() {
           Frontend · Architecture · Leadership
         </p>
         <a className={styles.top} href="#top">
-          Наверх
+          {t.footer.top}
         </a>
       </div>
     </footer>

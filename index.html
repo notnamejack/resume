@@ -1,24 +1,40 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function () {
+        var locale = "en";
+        var theme = "dark";
+        try {
+          var storedLocale = localStorage.getItem("locale");
+          var storedTheme = localStorage.getItem("theme");
+          if (storedLocale === "ru" || storedLocale === "en") locale = storedLocale;
+          if (storedTheme === "light" || storedTheme === "dark") theme = storedTheme;
+        } catch (e) {}
+        var root = document.documentElement;
+        root.lang = locale;
+        root.dataset.theme = theme;
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="color-scheme" content="dark light" />
     <meta name="theme-color" content="#0D0D0F" />
     <title>Алексей — Senior / Lead Frontend Developer</title>
     <meta
       name="description"
-      content="Алексей — Senior / Lead Frontend Developer. Архитектура веб-приложений, сложные интерфейсы и инженерные процессы в командах."
+      content="Aleksei, Senior / Lead Frontend Developer. Application architecture, complex interfaces, and engineering process in teams."
     />
     <meta name="author" content="Алексей" />
     <link rel="canonical" href="https://notnamejack.github.io/resume/" />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ru_RU" />
     <meta property="og:site_name" content="Алексей" />
     <meta property="og:title" content="Алексей — Frontend Engineer. Architecture. Leadership." />
     <meta
       property="og:description"
-      content="Senior / Lead Frontend Developer. Проектирую архитектуру веб-приложений, сложные интерфейсы и инженерные процессы в командах."
+      content="Senior / Lead Frontend Developer. Application architecture, complex interfaces, and engineering process in teams."
     />
     <meta property="og:url" content="https://notnamejack.github.io/resume/" />
     <meta property="og:image" content="https://notnamejack.github.io/resume/og.png" />
@@ -29,7 +45,7 @@
     <meta name="twitter:title" content="Алексей — Frontend Engineer. Architecture. Leadership." />
     <meta
       name="twitter:description"
-      content="Senior / Lead Frontend Developer. Архитектура, сложные интерфейсы, инженерные процессы."
+      content="Senior / Lead Frontend Developer. Application architecture, complex interfaces, engineering process."
     />
     <meta name="twitter:image" content="https://notnamejack.github.io/resume/og.png" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

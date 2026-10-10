@@ -1,13 +1,15 @@
 import { sections } from "@/shared/config/navigation";
 import { useCurrentSection } from "@/shared/lib/active-section";
+import { usePreferences } from "@/shared/preferences/preferences";
 import { cn } from "@/shared/lib/cn";
 import styles from "./SectionRail.module.scss";
 
 export function SectionRail() {
+  const { t } = usePreferences();
   const active = useCurrentSection();
 
   return (
-    <nav id="section-rail" className={styles.rail} aria-label="Номера разделов">
+    <nav id="section-rail" className={styles.rail} aria-label={t.rail}>
       <ol className={styles.list}>
         {sections.map((section) => (
           <li key={section.id}>

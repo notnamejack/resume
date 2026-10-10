@@ -1,32 +1,7 @@
 export const processSteps = [
-  {
-    id: "problem",
-    index: "01",
-    title: "Understanding the problem",
-    text: "Сначала отделяю задачу продукта от привычного способа её закрыть. Кто пользователь, какое ограничение системы и что будет считаться готовым через полгода — без этого архитектура обслуживает макет, а не развитие.",
-  },
-  {
-    id: "architecture",
-    index: "02",
-    title: "Architecture & Design",
-    text: "Фиксирую границы модулей, контракты данных и то, что должно пережить смену экрана. Feature-Sliced Design и компонентная архитектура здесь — способ удержать сложность, а не схема ради схемы.",
-  },
-  {
-    id: "implementation",
-    index: "03",
-    title: "Implementation",
-    text: "Режу работу вертикальными срезами: состояние, API, интерфейс. Сложность остаётся в модуле, который за неё отвечает. Остальной код не должен знать лишнего.",
-  },
-  {
-    id: "quality",
-    index: "04",
-    title: "Testing & Code Quality",
-    text: "Проверяю критичные сценарии, а ревью использую как сверку общей модели. Стандарты и автоматизация, включая AI code review, снимают шум, чтобы люди обсуждали решения.",
-  },
-  {
-    id: "delivery",
-    index: "05",
-    title: "Delivery & Evolution",
-    text: "Сборка, окружения и путь до пользователя — часть системы. После релиза архитектура должна оставаться понятной тем, кто придёт позже и будет её менять.",
-  },
+  { id: "problem", index: "01", title: "Understanding the problem" },
+  { id: "architecture", index: "02", title: "Architecture & Design" },
+  { id: "implementation", index: "03", title: "Implementation" },
+  { id: "quality", index: "04", title: "Testing & Code Quality" },
+  { id: "delivery", index: "05", title: "Delivery & Evolution" },
 ] as const;

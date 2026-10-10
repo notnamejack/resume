@@ -27,7 +27,7 @@
 
 .primary {
   background: $accent;
-  color: $bg;
+  color: $accent-ink;
   border: 1px solid $accent;
 
   @media (hover: hover) and (pointer: fine) {
@@ -44,8 +44,8 @@
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
-      border-color: $accent;
-      color: $accent;
+      border-color: $accent-text;
+      color: $accent-text;
     }
   }
 }
