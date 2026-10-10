@@ -32,7 +32,7 @@
   border-right: 1px solid $line;
   border-bottom: 1px solid $line;
   text-align: left;
-  padding: 1rem 0.9rem 1.15rem 0;
+  padding: 1.15rem 1.05rem 1.3rem;
   cursor: pointer;
   min-height: 6.5rem;
 
@@ -96,7 +96,6 @@
 
   .tab {
     min-height: 0;
-    padding-right: 0;
     border-right: 0;
   }
 }
