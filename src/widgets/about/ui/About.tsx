@@ -7,9 +7,9 @@ import styles from "./About.module.scss";
 export function About() {
   const { t } = usePreferences();
   const meta = [
-    { label: t.about.labels.name, value: site.name },
+    { label: t.about.labels.name, value: t.identity.name },
     { label: t.about.labels.github, value: site.handle },
-    { label: t.about.labels.pronouns, value: site.pronouns },
+    { label: t.about.labels.pronouns, value: t.identity.pronouns },
     { label: t.about.labels.city, value: t.about.city },
   ];
 

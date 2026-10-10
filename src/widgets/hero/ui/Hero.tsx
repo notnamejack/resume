@@ -87,7 +87,12 @@ export function Hero() {
               <span className="sr-only">{t.newTab}</span>
             </Button>
           </motion.div>
-          <motion.a className={styles.scroll} href="#expertise" aria-label={t.hero.scroll} variants={item}>
+          <motion.a
+            className={styles.scroll}
+            href="#expertise"
+            aria-label={`${t.hero.scrollWord}. ${t.hero.scroll}`}
+            variants={item}
+          >
             <span aria-hidden="true">{t.hero.scrollWord}</span>
             <span className={styles.scrollLine} aria-hidden="true" />
           </motion.a>

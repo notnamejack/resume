@@ -102,7 +102,7 @@ export function Header() {
     <header ref={headerRef} className={cn(styles.header, (scrolled || open) && styles.solid)}>
       <div className={styles.inner}>
         <a className={styles.brand} href="#top" onClick={() => setOpen(false)}>
-          <span className={styles.name}>{site.name}</span>
+          <span className={styles.name}>{t.identity.name}</span>
           <span className={styles.handle}>{site.handle}</span>
         </a>
 
@@ -147,7 +147,7 @@ export function Header() {
             className={styles.github}
             href={site.github}
             target="_blank"
-            rel="me noreferrer noopener"
+            rel="me noopener noreferrer"
           >
             <GithubIcon />
             <span className="sr-only">{t.header.github}</span>

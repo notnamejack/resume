@@ -1,12 +1,15 @@
+import { normalizeSiteUrl } from "@/shared/config/site-url";
+
+export const siteUrl = normalizeSiteUrl(import.meta.env.VITE_SITE_URL);
+
 export const site = {
+  // Кириллица. На странице имя берётся из messages.identity: EN Alexey, RU Алексей.
   name: "Алексей",
   handle: "notnamejack",
-  role: "Senior / Lead Frontend Developer",
-  location: "Иркутск",
-  pronouns: "he/him",
   github: "https://github.com/notnamejack",
-  url: "https://notnamejack.github.io/resume/",
+  url: siteUrl,
   // Публичные контакты. Заполнить строку после подтверждения — секция подхватит сама.
+  // TODO: worksFor, familyName и email — только после подтверждения, не выдумывать.
   email: "",
   telegram: "@notnamejack",
 };

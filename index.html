@@ -2,6 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#0D0D0F" />
     <script>
       (function () {
         var locale = "en";
@@ -9,73 +12,102 @@
         try {
           var storedLocale = localStorage.getItem("locale");
           var storedTheme = localStorage.getItem("theme");
-          if (storedLocale === "ru" || storedLocale === "en") locale = storedLocale;
-          if (storedTheme === "light" || storedTheme === "dark") theme = storedTheme;
+          if (storedLocale === "ru" || storedLocale === "en") {
+            locale = storedLocale;
+          } else {
+            var language = (navigator.language || "").toLowerCase();
+            locale = language.indexOf("ru") === 0 ? "ru" : "en";
+          }
+          if (storedTheme === "light" || storedTheme === "dark") {
+            theme = storedTheme;
+          } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+            theme = "light";
+          }
         } catch (e) {}
         var root = document.documentElement;
         root.lang = locale;
         root.dataset.theme = theme;
+        var themeColor = document.querySelector('meta[name="theme-color"]');
+        if (themeColor) themeColor.setAttribute("content", theme === "light" ? "#F4F4F0" : "#0D0D0F");
       })();
     </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="dark light" />
-    <meta name="theme-color" content="#0D0D0F" />
-    <title>Алексей — Senior / Lead Frontend Developer</title>
+    <title>Alexey — Senior Frontend/Team Lead Developer</title>
     <meta
       name="description"
-      content="Aleksei, Senior / Lead Frontend Developer. Application architecture, complex interfaces, and engineering process in teams."
+      content="Alexey, Senior Frontend/Team Lead Developer. Application architecture, complex interfaces, and engineering process in teams."
     />
-    <meta name="author" content="Алексей" />
-    <link rel="canonical" href="https://notnamejack.github.io/resume/" />
+    <meta name="author" content="Alexey" />
+    <link rel="canonical" href="%VITE_SITE_URL%" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="ru_RU" />
-    <meta property="og:site_name" content="Алексей" />
-    <meta property="og:title" content="Алексей — Frontend Engineer. Architecture. Leadership." />
+    <meta property="og:site_name" content="Alexey" />
+    <meta property="og:title" content="Alexey — Senior Frontend/Team Lead Developer" />
     <meta
       property="og:description"
-      content="Senior / Lead Frontend Developer. Application architecture, complex interfaces, and engineering process in teams."
+      content="Senior Frontend/Team Lead Developer. Application architecture, complex interfaces, and engineering process in teams."
     />
-    <meta property="og:url" content="https://notnamejack.github.io/resume/" />
-    <meta property="og:image" content="https://notnamejack.github.io/resume/og.png" />
+    <meta property="og:url" content="%VITE_SITE_URL%" />
+    <meta property="og:image" content="%VITE_SITE_URL%og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Алексей — Frontend Engineer. Architecture. Leadership." />
+    <meta property="og:image:alt" content="Alexey — Senior Frontend/Team Lead Developer" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Алексей — Frontend Engineer. Architecture. Leadership." />
+    <meta name="twitter:title" content="Alexey — Senior Frontend/Team Lead Developer" />
     <meta
       name="twitter:description"
-      content="Senior / Lead Frontend Developer. Application architecture, complex interfaces, engineering process."
+      content="Senior Frontend/Team Lead Developer. Application architecture, complex interfaces, engineering process."
     />
-    <meta name="twitter:image" content="https://notnamejack.github.io/resume/og.png" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="twitter:image" content="%VITE_SITE_URL%og.png" />
+    <link rel="icon" href="%BASE_URL%favicon.svg" type="image/svg+xml" />
+    <!-- TODO: worksFor, familyName, email — только после подтверждения -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "ProfilePage",
-        "url": "https://notnamejack.github.io/resume/",
+        "url": "%VITE_SITE_URL%",
         "mainEntity": {
           "@type": "Person",
-          "name": "Алексей",
-          "alternateName": "notnamejack",
-          "jobTitle": "Senior / Lead Frontend Developer",
-          "url": "https://notnamejack.github.io/resume/",
+          "name": "Alexey",
+          "alternateName": ["Алексей", "notnamejack"],
+          "jobTitle": "Senior Frontend/Team Lead Developer",
+          "description": "Alexey, Senior Frontend/Team Lead Developer. Application architecture, complex interfaces, and engineering process in teams.",
+          "image": "%VITE_SITE_URL%og.png",
+          "url": "%VITE_SITE_URL%",
           "sameAs": ["https://github.com/notnamejack", "https://t.me/notnamejack"],
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Irkutsk"
+          },
           "homeLocation": {
             "@type": "Place",
             "name": "Irkutsk"
           },
           "knowsAbout": [
-            "Frontend architecture",
             "React",
             "TypeScript",
-            "Engineering leadership"
+            "Redux Toolkit",
+            "RTK Query",
+            "Feature-Sliced Design",
+            "WebGL",
+            "CI/CD",
+            "frontend architecture"
           ]
         }
       }
     </script>
   </head>
   <body>
+    <noscript>
+      <div class="noscript">
+        <p><strong>Alexey</strong> (Алексей) — Senior Frontend/Team Lead Developer. Irkutsk.</p>
+        <p>Application architecture, complex interfaces, and engineering process in teams.</p>
+        <p>
+          <a href="https://github.com/notnamejack">GitHub</a>
+          <a href="https://t.me/notnamejack">Telegram</a>
+        </p>
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

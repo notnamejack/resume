@@ -1,7 +1,7 @@
 export const processSteps = [
-  { id: "problem", index: "01", title: "Understanding the problem" },
-  { id: "architecture", index: "02", title: "Architecture & Design" },
-  { id: "implementation", index: "03", title: "Implementation" },
-  { id: "quality", index: "04", title: "Testing & Code Quality" },
-  { id: "delivery", index: "05", title: "Delivery & Evolution" },
+  { id: "problem", index: "01" },
+  { id: "architecture", index: "02" },
+  { id: "implementation", index: "03" },
+  { id: "quality", index: "04" },
+  { id: "delivery", index: "05" },
 ] as const;

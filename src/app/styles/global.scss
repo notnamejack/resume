@@ -4,6 +4,24 @@
   box-sizing: border-box;
 }
 
+@mixin light-theme {
+  --bg: #f4f4f0;
+  --surface: #ffffff;
+  --text: #141416;
+  --muted: #5c5c64;
+  --accent: #c7ff10;
+  --accent-text: #3d5600;
+  --accent-ink: #141416;
+  --line: rgba(20, 20, 22, 0.12);
+  --line-strong: rgba(20, 20, 22, 0.2);
+  --header-bg: rgba(244, 244, 240, 0.88);
+  --overlay: rgba(244, 244, 240, 0.97);
+  --scrollbar: #c4c4bc;
+  --grid-line: rgba(20, 20, 22, 0.07);
+  --rail: rgba(92, 92, 100, 0.75);
+  color-scheme: light;
+}
+
 :root {
   --bg: #0d0d0f;
   --surface: #17171b;
@@ -23,21 +41,13 @@
 }
 
 :root[data-theme="light"] {
-  --bg: #f4f4f0;
-  --surface: #ffffff;
-  --text: #141416;
-  --muted: #5c5c64;
-  --accent: #c7ff10;
-  --accent-text: #3d5600;
-  --accent-ink: #141416;
-  --line: rgba(20, 20, 22, 0.12);
-  --line-strong: rgba(20, 20, 22, 0.2);
-  --header-bg: rgba(244, 244, 240, 0.88);
-  --overlay: rgba(244, 244, 240, 0.97);
-  --scrollbar: #c4c4bc;
-  --grid-line: rgba(20, 20, 22, 0.07);
-  --rail: rgba(92, 92, 100, 0.75);
-  color-scheme: light;
+  @include light-theme;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    @include light-theme;
+  }
 }
 
 html {
@@ -135,6 +145,20 @@ ol {
 
 #main:focus {
   outline: none;
+}
+
+.noscript {
+  max-width: 40rem;
+  margin: 2.5rem auto;
+  padding-inline: clamp(1.25rem, 3vw, 2.5rem);
+
+  p + p {
+    margin-top: 0.75rem;
+  }
+
+  a {
+    margin-right: 1.25rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
