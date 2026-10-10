@@ -49,4 +49,4 @@ Telegram: [@notnamejack](https://t.me/notnamejack). Email пустой, пока
 1. В репозитории: Settings → Pages → Source: GitHub Actions.
 2. Workflow `.github/workflows/pages.yml` собирает `main` с `VITE_BASE=/resume/` и публикует `dist`.
 
-Свой домен: поменять `base` в workflow и абсолютные URL в `index.html` (`canonical`, Open Graph, JSON-LD) и `site.url`.
+Свой домен: в окружении сборки задать `VITE_SITE_URL` (со слэшем на конце, дефолт `https://notnamejack.github.io/resume/`) и `VITE_BASE` (`/resume/` для этого репозитория, `/` для корня домена). Адрес подставляется в `index.html`, `site.url`, `robots.txt` и `sitemap.xml`.

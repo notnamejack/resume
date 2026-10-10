@@ -1,10 +1,14 @@
+import { normalizeSiteUrl } from "@/shared/config/site-url";
+
+export const siteUrl = normalizeSiteUrl(import.meta.env.VITE_SITE_URL);
+
 export const site = {
   // Каноническое имя. То, что видно на странице, берётся из messages.identity,
   // чтобы EN и RU не тянули одну и ту же строку отсюда.
   name: "Алексей",
   handle: "notnamejack",
   github: "https://github.com/notnamejack",
-  url: "https://notnamejack.github.io/resume/",
+  url: siteUrl,
   // Публичные контакты. Заполнить строку после подтверждения — секция подхватит сама.
   // TODO: worksFor, familyName и email — только после подтверждения, не выдумывать.
   email: "",

@@ -27,6 +27,7 @@ jobs:
       - run: npm run build
         env:
           VITE_BASE: /resume/
+          VITE_SITE_URL: https://notnamejack.github.io/resume/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
