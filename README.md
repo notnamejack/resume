@@ -2,7 +2,7 @@
 
 Персональный сайт Senior / Lead Frontend Developer. Отдельный продукт, не замена профильному README GitHub: страница [github.com/notnamejack](https://github.com/notnamejack) живёт в репозитории `notnamejack/notnamejack`.
 
-Публичный кейс сейчас один — [Four Horses Club](https://github.com/notnamejack/four-horses-club). Следующие проекты добавлять только после разбора реального кода.
+Публичные кейсы: [Four Horses Club](https://github.com/notnamejack/four-horses-club) и [OdanLab](https://lab.odanchem.org/ru-ru/). У журнала нет открытого репозитория — описание по живому интерфейсу и зоне ответственности frontend. Следующий кейс добавлять только после разбора кода или подтверждённого скоупа.
 
 ## Стек
 
@@ -32,7 +32,7 @@ Email и Telegram намеренно пустые, пока адреса не п
 
 ## Новый проект
 
-Файл `src/shared/config/projects.ts`. Поля: описание, заметки только по тому, что есть в репозитории, стек, скриншот интерфейса, ссылки, `layout`.
+Файл `src/shared/config/projects.ts`. Поля: описание, заметки только по коду или подтверждённому скоупу, стек, скриншот интерфейса, `imageCaption`, ссылки. `github` можно не указывать, если репозитория нет.
 
 `layout` чередовать: `mediaStart`, `mediaEnd`, `stacked`.
 
