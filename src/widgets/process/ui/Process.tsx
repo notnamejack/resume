@@ -40,9 +40,9 @@ export function Process() {
       <div className={styles.wrap}>
         <Reveal>
           <header className={styles.intro}>
-            <p className={styles.kicker}>04 / Process</p>
-            <h2 id="process-title" className={styles.title} lang="en">
-              Systems over solutions.
+            <p className={styles.kicker}>{t.process.kicker}</p>
+            <h2 id="process-title" className={styles.title}>
+              {t.process.title}
             </h2>
           </header>
         </Reveal>
@@ -65,9 +65,7 @@ export function Process() {
               onKeyDown={(event) => onKeyDown(event, index)}
             >
               <span className={styles.tabIndex}>{item.index}</span>
-              <span className={styles.tabTitle} lang="en">
-                {item.title}
-              </span>
+              <span className={styles.tabTitle}>{t.process.titles[index]}</span>
             </button>
           ))}
         </div>

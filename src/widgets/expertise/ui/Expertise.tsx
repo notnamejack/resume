@@ -14,9 +14,9 @@ export function Expertise() {
         <Reveal>
           <div className={styles.intro}>
             <div>
-              <p className={styles.kicker}>02 / Expertise</p>
-              <h2 id="expertise-title" className={styles.title} lang="en">
-                Beyond writing code.
+              <p className={styles.kicker}>{t.expertise.kicker}</p>
+              <h2 id="expertise-title" className={styles.title}>
+                {t.expertise.title}
               </h2>
             </div>
             <p className={styles.lede}>{t.expertise.lede}</p>
@@ -26,9 +26,7 @@ export function Expertise() {
           {expertise.map((item, index) => (
             <article key={item.index} className={cn(styles.cell, styles[`c${item.index}`])}>
               <p className={styles.index}>{item.index}</p>
-              <h3 className={styles.name} lang="en">
-                {item.title}
-              </h3>
+              <h3 className={styles.name}>{t.expertise.titles[index]}</h3>
               <p className={styles.text}>{t.expertise.items[index]}</p>
               {item.meta ? (
                 <ul className={styles.meta}>

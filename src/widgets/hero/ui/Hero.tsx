@@ -51,17 +51,17 @@ export function Hero() {
       <div className={styles.grid} aria-hidden="true" />
       <div className={styles.gridHot} aria-hidden="true" />
       <div className={styles.inner}>
-        <p className={styles.kicker}>01 / Portfolio</p>
+        <p className={styles.kicker}>{t.hero.kicker}</p>
         <motion.div className={styles.stage} variants={container} initial="hidden" animate="show">
           <div className={styles.titleRow}>
             <div>
-              <motion.h1 id="hero-title" className={styles.title} lang="en" variants={item}>
-                <span className={styles.line}>Frontend Engineer.</span>
-                <span className={cn(styles.line, styles.accent)}>Architecture.</span>
-                <span className={styles.line}>Leadership.</span>
+              <motion.h1 id="hero-title" className={styles.title} variants={item}>
+                <span className={styles.line}>{t.hero.lines[0]}</span>
+                <span className={cn(styles.line, styles.accent)}>{t.hero.lines[1]}</span>
+                <span className={styles.line}>{t.hero.lines[2]}</span>
               </motion.h1>
               <motion.p className={styles.subtitle} variants={item}>
-                {site.role}
+                {t.hero.role}
               </motion.p>
             </div>
             <motion.dl className={styles.facts} variants={item}>
@@ -88,7 +88,7 @@ export function Hero() {
             </Button>
           </motion.div>
           <motion.a className={styles.scroll} href="#expertise" aria-label={t.hero.scroll} variants={item}>
-            <span aria-hidden="true">Scroll</span>
+            <span aria-hidden="true">{t.hero.scrollWord}</span>
             <span className={styles.scrollLine} aria-hidden="true" />
           </motion.a>
         </motion.div>

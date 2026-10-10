@@ -16,7 +16,7 @@ export function SectionRail() {
             <a
               className={cn(styles.link, active === section.id && styles.current)}
               href={section.href}
-              aria-label={`${section.index} ${section.label}`}
+              aria-label={`${section.index} ${t.nav[section.id]}`}
               aria-current={active === section.id ? "true" : undefined}
             >
               <span aria-hidden="true">{section.index}</span>

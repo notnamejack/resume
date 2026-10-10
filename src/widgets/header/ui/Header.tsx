@@ -114,7 +114,7 @@ export function Header() {
               href={item.href}
               aria-current={active === item.id ? "true" : undefined}
             >
-              {item.label}
+              {t.nav[item.id]}
             </a>
           ))}
         </nav>
@@ -179,7 +179,7 @@ export function Header() {
               {navItems.map((item) => (
                 <a key={item.id} className={styles.menuLink} href={item.href} onClick={() => setOpen(false)}>
                   <span className={styles.menuIndex}>{item.index}</span>
-                  {item.label}
+                  {t.nav[item.id]}
                 </a>
               ))}
             </div>,

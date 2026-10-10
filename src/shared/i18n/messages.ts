@@ -21,11 +21,25 @@ const en = {
   rail: "Section numbers",
   skip: "Skip to content",
   newTab: ", opens in a new tab",
+  nav: {
+    top: "Hero",
+    expertise: "Expertise",
+    work: "Projects",
+    process: "Process",
+    leadership: "Leadership",
+    stack: "Stack",
+    about: "About",
+    contact: "Contact",
+  },
   hero: {
+    kicker: "01 / Portfolio",
+    lines: ["Frontend Engineer.", "Architecture.", "Leadership."],
+    role: "Senior / Lead Frontend Developer",
     lede: "I design web application architecture, build complex interfaces, and set up engineering process inside teams.",
     projects: "Projects",
     contact: "Contact",
     scroll: "To expertise",
+    scrollWord: "Scroll",
     facts: [
       { label: "Location", value: "Irkutsk" },
       { label: "Experience", value: "5+ years" },
@@ -33,6 +47,9 @@ const en = {
     ],
   },
   expertise: {
+    kicker: "02 / Expertise",
+    title: "Beyond writing code.",
+    titles: ["Frontend Architecture", "Engineering Leadership", "Development Infrastructure", "Complex Interfaces"],
     lede: "Four areas where I make the calls: from module boundaries to how the team ships.",
     items: [
       "I design scalable architectures in React and TypeScript: module boundaries, Feature-Sliced Design, reuse without extra abstractions.",
@@ -42,8 +59,11 @@ const en = {
     ],
   },
   work: {
+    kicker: "03 / Work",
+    title: "Selected Projects.",
     lede: "Four Horses Club is taken from the public repository. OdanLab is taken from the live product and the frontend scope I own. The journal repository is closed.",
     openLive: "Open the live site, new tab",
+    live: "Live",
     stack: "Stack",
     cases: {
       "four-horses-club": {
@@ -101,8 +121,17 @@ const en = {
     },
   },
   process: {
+    kicker: "04 / Process",
+    title: "Systems over solutions.",
     tabs: "How I approach the work",
     hint: "Arrow keys change the step",
+    titles: [
+      "Understanding the problem",
+      "Architecture & Design",
+      "Implementation",
+      "Testing & Code Quality",
+      "Delivery & Evolution",
+    ],
     steps: [
       "First I separate the product problem from the habitual way of closing it. Who the user is, which constraint the system has, and what will count as done in six months — without that, architecture serves the mock, not the product.",
       "I fix module boundaries, data contracts, and what has to survive a new screen. Feature-Sliced Design and component architecture are how I hold complexity, not a diagram for its own sake.",
@@ -112,6 +141,8 @@ const en = {
     ],
   },
   leadership: {
+    kicker: "05 / Leadership",
+    title: "Engineering is a team effort.",
     lede: "For me, leadership is clear decisions and a setting where engineers do better work.",
     stats: [
       { kicker: "Frontend", prefix: "", caption: "specialists on the team I coordinated" },
@@ -137,10 +168,22 @@ const en = {
     ],
   },
   stack: {
+    kicker: "06 / Stack",
+    title: "Tools are secondary. Engineering comes first.",
     lede: "The stack changes. The way I hold complexity does not.",
     caption: "Technologies by category",
+    groups: {
+      frontend: "Frontend",
+      architecture: "Architecture",
+      graphics: "Graphics",
+      ui: "UI",
+      testing: "Testing",
+      infrastructure: "Infrastructure",
+    },
   },
   about: {
+    kicker: "07 / About",
+    title: "A little about me.",
     labels: {
       name: "Name",
       github: "GitHub",
@@ -156,7 +199,12 @@ const en = {
     principleLabel: "Principle",
     principle: "Good architecture should help the product evolve and the team work more effectively.",
   },
+  contact: {
+    kicker: "08 / Contact",
+    lines: ["Let's build", "something", "meaningful."],
+  },
   footer: {
+    tagline: "Frontend · Architecture · Leadership",
     top: "Back to top",
   },
 };
@@ -184,18 +232,35 @@ const ru: Messages = {
   rail: "Номера разделов",
   skip: "К содержанию",
   newTab: ", откроется в новой вкладке",
+  nav: {
+    top: "Главная",
+    expertise: "Экспертиза",
+    work: "Проекты",
+    process: "Процесс",
+    leadership: "Руководство",
+    stack: "Стек",
+    about: "Обо мне",
+    contact: "Контакты",
+  },
   hero: {
+    kicker: "01 / Портфолио",
+    lines: ["Фронтенд-инженер.", "Архитектура.", "Руководство."],
+    role: "Старший фронтенд-разработчик и тимлид",
     lede: "Проектирую архитектуру веб-приложений, разрабатываю сложные интерфейсы и выстраиваю инженерные процессы в командах.",
     projects: "Проекты",
     contact: "Контакты",
     scroll: "К разделу экспертизы",
+    scrollWord: "Дальше",
     facts: [
       { label: "Локация", value: "Иркутск" },
       { label: "Опыт", value: "5+ лет" },
-      { label: "Формат", value: "Hands-on и руководство" },
+      { label: "Формат", value: "Практика и руководство" },
     ],
   },
   expertise: {
+    kicker: "02 / Экспертиза",
+    title: "Не только код.",
+    titles: ["Архитектура фронтенда", "Инженерное руководство", "Инфраструктура разработки", "Сложные интерфейсы"],
     lede: "Четыре направления, в которых я принимаю решения: от границ модулей до того, как команда поставляет результат.",
     items: [
       "Проектирую масштабируемые архитектуры на React и TypeScript: границы модулей, Feature-Sliced Design, переиспользование без лишних абстракций.",
@@ -205,24 +270,27 @@ const ru: Messages = {
     ],
   },
   work: {
+    kicker: "03 / Проекты",
+    title: "Избранные проекты.",
     lede: "Four Horses Club разобран по открытому коду. OdanLab — по живому продукту и зоне ответственности frontend. Репозиторий журнала закрыт.",
     openLive: "Открыть живой сайт, новая вкладка",
+    live: "Сайт",
     stack: "Стек",
     cases: {
       "four-horses-club": {
         originalTitle: "Клуб четырёх коней",
         summary:
-          "Лендинг Международного васюкинского турнира по мотивам «Двенадцати стульев». Hero с бегущей строкой, лекция и сеанс, семь этапов преображения Васюков, карусель участников. Адаптивная вёрстка без фреймворка и сборки.",
+          "Лендинг Международного васюкинского турнира по мотивам «Двенадцати стульев». Главный экран с бегущей строкой, лекция и сеанс, семь этапов преображения Васюков, карусель участников. Адаптивная вёрстка без фреймворка и сборки.",
         imageAlt:
           "Главный экран лендинга «Клуб четырёх коней»: заголовок «Превратите уездный город в столицу земного шара», кнопки поддержки турнира и бегущая строка с цитатой.",
-        imageCaption: "Hero · 1440",
+        imageCaption: "Экран · 1440",
         notes: [
           {
             title: "Карусель участников",
             text: "Бесконечный цикл на клонах по краям. С 1024px видно 3 карточки, шаг равен ширине карточки и gap; уже — одна карточка на ширину viewport. Счётчик на desktop показывает правую видимую, на mobile — текущую. Автосмена 4 с, сброс по клику, пауза на hover, focus и скрытой вкладке.",
           },
           {
-            title: "Этапы на mobile",
+            title: "Этапы на узком экране",
             text: "До 768px сетка этапов становится слайдером без loop и autoplay. Кнопки гаснут на краях, точки держат aria-current. Шаги 4 и 5 склеиваются в один слайд, на desktop разметка возвращается как была.",
           },
           {
@@ -264,8 +332,11 @@ const ru: Messages = {
     },
   },
   process: {
+    kicker: "04 / Процесс",
+    title: "Системы, не разовые решения.",
     tabs: "Как я подхожу к разработке",
     hint: "Стрелки переключают этап",
+    titles: ["Понять задачу", "Архитектура и дизайн", "Реализация", "Тесты и качество кода", "Поставка и развитие"],
     steps: [
       "Сначала отделяю задачу продукта от привычного способа её закрыть. Кто пользователь, какое ограничение системы и что будет считаться готовым через полгода — без этого архитектура обслуживает макет, а не развитие.",
       "Фиксирую границы модулей, контракты данных и то, что должно пережить смену экрана. Feature-Sliced Design и компонентная архитектура здесь — способ удержать сложность, а не схема ради схемы.",
@@ -275,9 +346,11 @@ const ru: Messages = {
     ],
   },
   leadership: {
+    kicker: "05 / Руководство",
+    title: "Инженерия — командная работа.",
     lede: "Руководство для меня — это ясность решений и среда, в которой инженеры делают работу лучше.",
     stats: [
-      { kicker: "Frontend", prefix: "", caption: "специалистов в команде, которую координировал" },
+      { kicker: "Фронтенд", prefix: "", caption: "специалистов в команде, которую координировал" },
       { kicker: "Отдел", prefix: "до", caption: "человек при замещении руководителя отдела" },
     ],
     points: [
@@ -294,16 +367,28 @@ const ru: Messages = {
         text: "Участвую в технических интервью: смотрю на мышление и способность работать внутри системы.",
       },
       {
-        title: "AI Code Review",
+        title: "Ревью кода с AI",
         text: "Автоматизирую разбор изменений агентами там, где это усиливает команду и не снимает ответственность.",
       },
     ],
   },
   stack: {
+    kicker: "06 / Стек",
+    title: "Инструменты вторичны. Сначала инженерия.",
     lede: "Стек меняется. Способ держать сложность — нет.",
     caption: "Технологии по категориям",
+    groups: {
+      frontend: "Фронтенд",
+      architecture: "Архитектура",
+      graphics: "Графика",
+      ui: "Интерфейс",
+      testing: "Тестирование",
+      infrastructure: "Инфраструктура",
+    },
   },
   about: {
+    kicker: "07 / Обо мне",
+    title: "Немного обо мне.",
     labels: {
       name: "Имя",
       github: "GitHub",
@@ -319,7 +404,12 @@ const ru: Messages = {
     principleLabel: "Принцип",
     principle: "Хорошая архитектура должна помогать продукту развиваться, а команде работать эффективнее.",
   },
+  contact: {
+    kicker: "08 / Контакты",
+    lines: ["Сделаем", "что-то", "значимое."],
+  },
   footer: {
+    tagline: "Фронтенд · Архитектура · Руководство",
     top: "Наверх",
   },
 };

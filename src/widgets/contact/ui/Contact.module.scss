@@ -16,7 +16,7 @@
 }
 
 .accent {
-  color: $accent-text;
+  color: $accent;
 }
 
 .list {
@@ -38,7 +38,7 @@
   @media (hover: hover) and (pointer: fine) {
     &:hover .value,
     &:hover .icon {
-      color: $accent-text;
+      color: $accent;
     }
 
     &:hover .icon {

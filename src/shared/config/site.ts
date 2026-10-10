@@ -8,7 +8,7 @@ export const site = {
   url: "https://notnamejack.github.io/resume/",
   // Публичные контакты. Заполнить строку после подтверждения — секция подхватит сама.
   email: "",
-  telegram: "",
+  telegram: "@notnamejack",
 };
 
 export type ContactLink = {
