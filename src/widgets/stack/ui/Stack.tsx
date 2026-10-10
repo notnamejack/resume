@@ -23,9 +23,9 @@ export function Stack() {
         <Reveal>
           <div className={styles.intro}>
             <div>
-              <p className={styles.kicker}>06 / Stack</p>
-              <h2 id="stack-title" className={styles.title} lang="en">
-                Tools are secondary. Engineering comes first.
+              <p className={styles.kicker}>{t.stack.kicker}</p>
+              <h2 id="stack-title" className={styles.title}>
+                {t.stack.title}
               </h2>
             </div>
             <p className={styles.lede}>{t.stack.lede}</p>
@@ -42,7 +42,7 @@ export function Stack() {
                   <th className={styles.category} scope="row">
                     <span className={styles.cat}>
                       <Icon size={16} strokeWidth={1.5} aria-hidden="true" />
-                      {group.label}
+                      {t.stack.groups[group.id]}
                     </span>
                   </th>
                   <td className={styles.items}>

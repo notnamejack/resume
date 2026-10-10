@@ -11,9 +11,9 @@ export function Leadership() {
     <Section id="leadership" labelledBy="leadership-title" tone="raised">
       <div className={styles.wrap}>
         <Reveal>
-          <p className={styles.kicker}>05 / Leadership</p>
-          <h2 id="leadership-title" className={styles.title} lang="en">
-            Engineering is a team effort.
+          <p className={styles.kicker}>{t.leadership.kicker}</p>
+          <h2 id="leadership-title" className={styles.title}>
+            {t.leadership.title}
           </h2>
           <p className={styles.lede}>{t.leadership.lede}</p>
         </Reveal>

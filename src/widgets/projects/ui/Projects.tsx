@@ -21,9 +21,9 @@ export function Projects() {
         <Reveal>
           <div className={styles.intro}>
             <div>
-              <p className={styles.kicker}>03 / Work</p>
-              <h2 id="work-title" className={styles.title} lang="en">
-                Selected Projects.
+              <p className={styles.kicker}>{t.work.kicker}</p>
+              <h2 id="work-title" className={styles.title}>
+                {t.work.title}
               </h2>
             </div>
             <p className={styles.lede}>{t.work.lede}</p>
@@ -104,7 +104,7 @@ export function Projects() {
                     ) : null}
                     {project.live ? (
                       <a className={styles.link} href={project.live} target="_blank" rel="noreferrer noopener">
-                        Live
+                        {t.work.live}
                         <ArrowUpRight size={16} strokeWidth={1.5} aria-hidden="true" />
                         <span className="sr-only">{t.newTab}</span>
                       </a>

@@ -13,13 +13,13 @@ export function Contact() {
     <Section id="contact" labelledBy="contact-title">
       <div className={styles.wrap}>
         <Reveal>
-          <p className={styles.kicker}>08 / Contact</p>
-          <h2 id="contact-title" className={styles.title} lang="en">
-            Let&apos;s build
+          <p className={styles.kicker}>{t.contact.kicker}</p>
+          <h2 id="contact-title" className={styles.title}>
+            {t.contact.lines[0]}
             <br />
-            something
+            {t.contact.lines[1]}
             <br />
-            <span className={styles.accent}>meaningful.</span>
+            <span className={styles.accent}>{t.contact.lines[2]}</span>
           </h2>
         </Reveal>
         <address className={styles.list}>

@@ -12,7 +12,7 @@ export function Footer() {
         <p className={styles.meta}>
           © {year} {site.name}
           <span aria-hidden="true"> · </span>
-          Frontend · Architecture · Leadership
+          {t.footer.tagline}
         </p>
         <a className={styles.top} href="#top">
           {t.footer.top}

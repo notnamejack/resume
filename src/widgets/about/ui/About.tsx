@@ -18,9 +18,9 @@ export function About() {
       <div className={styles.wrap}>
         <div className={styles.grid}>
           <Reveal className={styles.identity}>
-            <p className={styles.kicker}>07 / About</p>
-            <h2 id="about-title" className={styles.title} lang="en">
-              A little about me.
+            <p className={styles.kicker}>{t.about.kicker}</p>
+            <h2 id="about-title" className={styles.title}>
+              {t.about.title}
             </h2>
             <dl className={styles.meta}>
               {meta.map((item) => (
