@@ -1,5 +1,6 @@
 import { Boxes, CodeXml, FlaskConical, LayoutTemplate, Spline, Workflow, type LucideIcon } from "lucide-react";
 import { stackGroups, type StackGroupId } from "@/shared/config/stack";
+import { usePreferences } from "@/shared/preferences/preferences";
 import { Reveal } from "@/shared/ui/Reveal/Reveal";
 import { Section } from "@/shared/ui/Section/Section";
 import styles from "./Stack.module.scss";
@@ -14,6 +15,8 @@ const icons: Record<StackGroupId, LucideIcon> = {
 };
 
 export function Stack() {
+  const { t } = usePreferences();
+
   return (
     <Section id="stack" labelledBy="stack-title">
       <div className={styles.wrap}>
@@ -25,12 +28,12 @@ export function Stack() {
                 Tools are secondary. Engineering comes first.
               </h2>
             </div>
-            <p className={styles.lede}>Стек меняется. Способ держать сложность — нет.</p>
+            <p className={styles.lede}>{t.stack.lede}</p>
           </div>
         </Reveal>
 
         <table className={styles.table}>
-          <caption className="sr-only">Технологии по категориям</caption>
+          <caption className="sr-only">{t.stack.caption}</caption>
           <tbody>
             {stackGroups.map((group) => {
               const Icon = icons[group.id];

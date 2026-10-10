@@ -16,7 +16,7 @@
   @include kicker;
   letter-spacing: 0.08em;
   text-decoration: none;
-  color: rgba(147, 147, 155, 0.7);
+  color: var(--rail);
   display: block;
   text-align: right;
 
@@ -30,7 +30,7 @@
 }
 
 .current {
-  color: $accent;
+  color: $accent-text;
 }
 
 @media (max-width: 1280px) {

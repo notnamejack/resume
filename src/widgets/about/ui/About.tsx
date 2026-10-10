@@ -1,17 +1,18 @@
-import { aboutParagraphs, principle } from "@/shared/config/about";
 import { site } from "@/shared/config/site";
+import { usePreferences } from "@/shared/preferences/preferences";
 import { Reveal } from "@/shared/ui/Reveal/Reveal";
 import { Section } from "@/shared/ui/Section/Section";
 import styles from "./About.module.scss";
 
-const meta = [
-  { label: "Имя", value: site.name },
-  { label: "GitHub", value: site.handle },
-  { label: "Местоимения", value: site.pronouns },
-  { label: "Город", value: site.location },
-];
-
 export function About() {
+  const { t } = usePreferences();
+  const meta = [
+    { label: t.about.labels.name, value: site.name },
+    { label: t.about.labels.github, value: site.handle },
+    { label: t.about.labels.pronouns, value: site.pronouns },
+    { label: t.about.labels.city, value: t.about.city },
+  ];
+
   return (
     <Section id="about" labelledBy="about-title">
       <div className={styles.wrap}>
@@ -32,12 +33,12 @@ export function About() {
           </Reveal>
           <Reveal delay={0.08}>
             <div className={styles.copy}>
-              {aboutParagraphs.map((paragraph) => (
+              {t.about.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
               <blockquote className={styles.principle}>
-                <p className={styles.principleLabel}>Принцип</p>
-                <p className={styles.principleText}>{principle}</p>
+                <p className={styles.principleLabel}>{t.about.principleLabel}</p>
+                <p className={styles.principleText}>{t.about.principle}</p>
               </blockquote>
             </div>
           </Reveal>

@@ -1,16 +1,21 @@
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { sections } from "@/shared/config/navigation";
 import { site } from "@/shared/config/site";
+import type { Locale } from "@/shared/i18n/messages";
 import { useCurrentSection } from "@/shared/lib/active-section";
 import { cn } from "@/shared/lib/cn";
+import { usePreferences } from "@/shared/preferences/preferences";
 import { GithubIcon } from "@/shared/ui/GithubIcon/GithubIcon";
 import styles from "./Header.module.scss";
+
+const locales: Locale[] = ["en", "ru"];
 
 const navItems = sections.filter((section) => section.nav);
 
 export function Header() {
+  const { t, locale, setLocale, theme, setTheme } = usePreferences();
   const active = useCurrentSection();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -101,7 +106,7 @@ export function Header() {
           <span className={styles.handle}>{site.handle}</span>
         </a>
 
-        <nav className={styles.nav} aria-label="Разделы">
+        <nav className={styles.nav} aria-label={t.header.nav}>
           {navItems.map((item) => (
             <a
               key={item.id}
@@ -115,6 +120,29 @@ export function Header() {
         </nav>
 
         <div className={styles.tools}>
+          <div className={styles.locale} role="group" aria-label={t.controls.language}>
+            {locales.map((code) => (
+              <button
+                key={code}
+                type="button"
+                className={cn(styles.localeBtn, locale === code && styles.localeOn)}
+                lang={code}
+                aria-pressed={locale === code}
+                onClick={() => setLocale(code)}
+              >
+                {code}
+              </button>
+            ))}
+          </div>
+          <button
+            type="button"
+            className={styles.theme}
+            aria-pressed={theme === "light"}
+            aria-label={theme === "dark" ? t.controls.toLight : t.controls.toDark}
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          >
+            {theme === "dark" ? <Sun size={16} strokeWidth={1.5} /> : <Moon size={16} strokeWidth={1.5} />}
+          </button>
           <a
             className={styles.github}
             href={site.github}
@@ -122,7 +150,7 @@ export function Header() {
             rel="me noreferrer noopener"
           >
             <GithubIcon />
-            <span className="sr-only">GitHub, откроется в новой вкладке</span>
+            <span className="sr-only">{t.header.github}</span>
           </a>
           <button
             ref={buttonRef}
@@ -133,7 +161,7 @@ export function Header() {
             onClick={() => setOpen((value) => !value)}
           >
             {open ? <X size={18} strokeWidth={1.5} /> : <Menu size={18} strokeWidth={1.5} />}
-            <span className="sr-only">{open ? "Закрыть меню" : "Открыть меню"}</span>
+            <span className="sr-only">{open ? t.header.close : t.header.open}</span>
           </button>
         </div>
       </div>
@@ -146,7 +174,7 @@ export function Header() {
               className={styles.menu}
               role="dialog"
               aria-modal="true"
-              aria-label="Навигация"
+              aria-label={t.header.menu}
             >
               {navItems.map((item) => (
                 <a key={item.id} className={styles.menuLink} href={item.href} onClick={() => setOpen(false)}>
