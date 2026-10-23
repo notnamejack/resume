@@ -80,7 +80,8 @@ export const projects: Project[] = [
     github: "https://github.com/notnamejack/menu",
     live: "https://notnamejack.github.io/menu/",
     image: osteria,
-    imageWidth: 1440,
-    imageHeight: 900,
+    imageWidth: 1600,
+    imageHeight: 877,
+    layout: "mediaStart",
   },
 ];
