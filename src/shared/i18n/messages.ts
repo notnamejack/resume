@@ -152,7 +152,7 @@ const en = {
         summary:
           "A dining-room menu for iPad: antipasti, pasta, grill, and desserts. A tile shows the photo, name, price, a short description, and the weight. The card adds composition, calories, and tags, and a silent clip plays on the photo when the dish has one. The kitchen edits dishes in the admin, and GitHub Actions publishes the hall.",
         imageAlt:
-          "Osteria Alba hall menu: the wordmark, the category list, and antipasti tiles for caprese and salmon tartare with photos, prices, and weight.",
+          "Osteria Alba hall menu: the wordmark, the category list, and antipasti tiles for caprese and salmon tartare with photos and prices.",
         imageCaption: "Hall · 1440",
         notes: [
           {
@@ -397,7 +397,7 @@ const ru = {
         summary:
           "Меню зала для iPad: антипасти, паста, гриль и десерты. На плитке фото, название, цена, короткое описание и вес. В карточке состав, калории и теги; если у блюда есть ролик, он играет на фото без звука. Кухня правит блюда в админке, GitHub Actions публикует зал.",
         imageAlt:
-          "Меню зала Osteria Alba: словомарка, список категорий и плитки антипасти «Капрезе» и «Тартар из лосося» с фото, ценой и весом.",
+          "Меню зала Osteria Alba: словомарка, список категорий и плитки антипасти «Капрезе» и «Тартар из лосося» с фото и ценой.",
         imageCaption: "Зал · 1440",
         notes: [
           {
