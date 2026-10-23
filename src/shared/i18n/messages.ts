@@ -148,7 +148,7 @@ const en = {
         ],
       },
       "osteria-alba": {
-        originalTitle: "Меню зала",
+        originalTitle: "Dining-room menu",
         summary:
           "A dining-room menu for iPad: antipasti, pasta, grill, and desserts. A tile shows the photo, name, price, a short description, and the weight. The card adds composition, calories, and tags, and a silent clip plays on the photo when the dish has one. The kitchen edits dishes in the admin, and GitHub Actions publishes the hall.",
         imageAlt:
