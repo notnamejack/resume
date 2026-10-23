@@ -9,6 +9,11 @@
       (function () {
         var locale = "en";
         var theme = "dark";
+        var forced = null;
+        try {
+          var queryTheme = new URLSearchParams(window.location.search).get("theme");
+          if (queryTheme === "light" || queryTheme === "dark") forced = queryTheme;
+        } catch (e) {}
         try {
           var storedLocale = localStorage.getItem("locale");
           var storedTheme = localStorage.getItem("theme");
@@ -18,15 +23,20 @@
             var language = (navigator.language || "").toLowerCase();
             locale = language.indexOf("ru") === 0 ? "ru" : "en";
           }
-          if (storedTheme === "light" || storedTheme === "dark") {
+          if (forced) {
+            theme = forced;
+          } else if (storedTheme === "light" || storedTheme === "dark") {
             theme = storedTheme;
           } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
             theme = "light";
           }
-        } catch (e) {}
+        } catch (e) {
+          if (forced) theme = forced;
+        }
         var root = document.documentElement;
         root.lang = locale;
         root.dataset.theme = theme;
+        root.style.colorScheme = theme;
         var themeColor = document.querySelector('meta[name="theme-color"]');
         if (themeColor) themeColor.setAttribute("content", theme === "light" ? "#F4F4F0" : "#0D0D0F");
       })();

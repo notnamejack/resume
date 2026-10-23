@@ -55,6 +55,7 @@ export function PreferencesProvider({ children }: { children: ReactNode }) {
     const root = document.documentElement;
     root.lang = locale;
     root.dataset.theme = theme;
+    root.style.colorScheme = theme;
     document.querySelector('meta[name="theme-color"]')?.setAttribute("content", themeColor(theme));
   }, [locale, theme]);
 

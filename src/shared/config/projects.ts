@@ -1,5 +1,6 @@
 import shot from "@/assets/projects/four-horses-club.webp";
 import odanlab from "@/assets/projects/odanlab.webp";
+import osteria from "@/assets/projects/osteria-alba.webp";
 
 /**
  * Кейс — по коду репозитория или по живому продукту и подтверждённой зоне ответственности.
@@ -10,7 +11,7 @@ import odanlab from "@/assets/projects/odanlab.webp";
  */
 export type ProjectLayout = "mediaStart" | "mediaEnd" | "stacked";
 
-export type ProjectSlug = "four-horses-club" | "odanlab";
+export type ProjectSlug = "four-horses-club" | "odanlab" | "osteria-alba";
 
 export type Project = {
   slug: ProjectSlug;
@@ -69,5 +70,17 @@ export const projects: Project[] = [
     image: odanlab,
     imageWidth: 1600,
     imageHeight: 877,
+  },
+  {
+    slug: "osteria-alba",
+    title: "Osteria Alba",
+    year: "2026",
+    stack: ["React", "TypeScript", "Vite", "Tailwind CSS"],
+    meta: ["Sveltia CMS", "GitHub Pages"],
+    github: "https://github.com/notnamejack/menu",
+    live: "https://notnamejack.github.io/menu/",
+    image: osteria,
+    imageWidth: 1440,
+    imageHeight: 900,
   },
 ];
