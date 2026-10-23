@@ -2,7 +2,7 @@
 
 Персональный сайт Senior Frontend/Team Lead Developer. Отдельный продукт, не замена профильному README GitHub: страница [github.com/notnamejack](https://github.com/notnamejack) живёт в репозитории `notnamejack/notnamejack`.
 
-Публичные кейсы: [Four Horses Club](https://github.com/notnamejack/four-horses-club) и [OdanLab](https://lab.odanchem.org/ru-ru/). У журнала нет открытого репозитория — описание по живому интерфейсу и зоне ответственности фронтенда. Следующий кейс добавлять только после разбора кода или подтверждённого скоупа.
+Публичные кейсы: [Four Horses Club](https://github.com/notnamejack/four-horses-club), [Osteria Alba](https://github.com/notnamejack/menu) и [OdanLab](https://lab.odanchem.org/ru-ru/). У журнала нет открытого репозитория — описание по живому интерфейсу и зоне ответственности фронтенда. Следующий кейс добавлять только после разбора кода или подтверждённого скоупа.
 
 ## Стек
 
@@ -33,6 +33,8 @@ npm run preview
 ## Язык и тема
 
 Если в `localStorage` нет `locale`, первый визит смотрит на `navigator.language`: `ru*` → русский, иначе английский. Если нет `theme`, тема берётся из `prefers-color-scheme`. Выбор в шапке пишется в `localStorage` и больше не следует за системой. Тот же порядок у inline-скрипта в `index.html` и у React-провайдера, чтобы не было мигания.
+
+`?theme=dark` и `?theme=light` включают тему только на эту загрузку. Параметр перекрывает и сохранённый выбор, и `prefers-color-scheme`, и в `localStorage` не пишется: следующий заход без параметра снова идёт по правилам выше. Тёмная версия для скриншота в README и соцпредпросмотре: https://notnamejack.github.io/resume/?theme=dark
 
 ## Контакты
 
